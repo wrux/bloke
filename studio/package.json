@@ -1,10 +1,10 @@
 {
-	"name": "mysanityproject",
+	"name": "bloke",
 	"private": true,
 	"version": "1.0.0",
 	"description": "",
 	"main": "package.json",
-	"author": "Knut Melvær <knut@sanity.io>",
+	"author": "Callum Bonnyman <callum@bloke.blog>",
 	"license": "UNLICENSED",
 	"keywords": [
 		"sanity"
