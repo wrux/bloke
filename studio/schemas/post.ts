@@ -26,10 +26,10 @@ export default {
       }
     },
     {
-      name: 'categories',
-      title: 'Categories',
+      name: 'countries',
+      title: 'Countries',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'category'}}]
+      of: [{type: 'reference', to: {type: 'country'}}]
     },
     {
       name: 'publishedAt',

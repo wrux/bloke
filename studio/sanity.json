@@ -1,8 +1,8 @@
 {
   "root": true,
   "api": {
-    "projectId": "PLACEHOLDER_ENV_VARIABLES_WILL_HANDLE_FOR_US",
-    "dataset": "PLACEHOLDER_ENV_VARIABLES_WILL_HANDLE_FOR_US"
+    "projectId": "kx8fng11",
+    "dataset": "production"
   },
   "project": {
     "name": "Bloke Blog CMS",
