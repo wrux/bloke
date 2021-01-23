@@ -1,7 +1,8 @@
-import Date from '../components/date'
-import CoverImage from '../components/cover-image'
-import PostTitle from '../components/post-title'
-export default function PostHeader({ title, coverImage, date }) {
+import Date from './date'
+import CoverImage from './cover-image'
+import PostTitle from './post-title'
+
+const PostHeader = ({ title, coverImage, date }) => {
   return (
     <>
       <PostTitle>{title}</PostTitle>
@@ -16,3 +17,5 @@ export default function PostHeader({ title, coverImage, date }) {
     </>
   )
 }
+
+export default PostHeader

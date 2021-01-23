@@ -2,7 +2,7 @@ import cn from 'classnames'
 import Link from 'next/link'
 import { imageBuilder } from '../lib/sanity'
 
-export default function CoverImage({ title, url, imageObject, slug }) {
+const CoverImage = ({ title, imageObject, slug }) => {
   const image = (
     <img
       width={1240}
@@ -27,3 +27,5 @@ export default function CoverImage({ title, url, imageObject, slug }) {
     </div>
   )
 }
+
+export default CoverImage
