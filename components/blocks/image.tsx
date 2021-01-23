@@ -1,9 +1,10 @@
 import React from 'react';
 
-const ImageBlock = (props) => {
-  console.log('props', props);
-  return <h1>IMAGE</h1>;
-  // return <div className="prose">{children}</div>;
-};
+const ImageBlock: React.FC = (props) => (
+  <div className="my-5">
+    <h1>IMAGE</h1>
+    <code>{JSON.stringify(props)}</code>
+  </div>
+);
 
 export default ImageBlock;

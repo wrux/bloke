@@ -2,7 +2,7 @@ import React from 'react';
 import Footer from './footer';
 import Meta from './meta';
 
-const Layout = ({ children }) => (
+const Layout: React.FC = ({ children }) => (
   <>
     <Meta />
     <div className="min-h-screen">

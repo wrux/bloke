@@ -1,5 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
+import { GetStaticProps } from 'next';
 import Container from '../components/container';
 import MoreStories from '../components/more-stories';
 import HeroPost from '../components/hero-post';
@@ -35,12 +36,12 @@ const Index = ({ allPosts }): JSX.Element => {
   );
 };
 
-export async function getStaticProps({ preview = false }) {
+export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
   const allPosts = await getAllPostsForHome(preview);
   return {
-    props: { allPosts, preview },
+    props: { allPosts },
     revalidate: 1,
   };
-}
+};
 
 export default Index;

@@ -3,7 +3,13 @@ import cn from 'classnames';
 import Link from 'next/link';
 import { imageBuilder } from '../lib/sanity';
 
-const CoverImage = ({ title, imageObject, slug = null }) => {
+type Props = {
+  title: string;
+  imageObject: any;
+  slug?: string;
+};
+
+const CoverImage: React.FC<Props> = ({ title, imageObject, slug = null }) => {
   const image = (
     <img
       width={1240}

@@ -1,9 +1,13 @@
 import React from 'react';
 import { isValid, parseISO, format } from 'date-fns';
 
-const Date = ({ dateString }) => {
+type Props = {
+  dateString: string;
+};
+
+const Date: React.FC<Props> = ({ dateString }) => {
   if (!isValid(parseISO(dateString))) {
-    return <span>No date</span>;
+    return <></>;
   }
   const date = parseISO(dateString);
   return <time dateTime={dateString}>{format(date, 'LLLL	d, yyyy')}</time>;

@@ -3,7 +3,21 @@ import Link from 'next/link';
 import Date from './date';
 import CoverImage from './cover-image';
 
-const HeroPost = ({ title, coverImage, date, excerpt, slug }) => (
+type Props = {
+  title: string;
+  coverImage?: any;
+  date: string;
+  excerpt?: string;
+  slug: string;
+};
+
+const HeroPost: React.FC<Props> = ({
+  title,
+  coverImage,
+  date,
+  excerpt,
+  slug,
+}) => (
   <section>
     <div className="mb-8 md:mb-16">
       <CoverImage slug={slug} imageObject={coverImage} title={title} />

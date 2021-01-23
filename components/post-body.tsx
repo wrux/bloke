@@ -2,16 +2,20 @@ import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
 import { Text, Image } from './blocks';
 
+type Props = {
+  content: any[];
+};
+
 const serializers = {
   types: {
     block: (props) => Text(props),
     image: (props) => Image(props),
   },
-  container: ({ children }) => <div className="blocks">{children}</div>,
 };
 
-const PostBody = ({ content }) => (
+const PostBody: React.FC<Props> = ({ content }) => (
   <div className="max-w-2xl mx-auto">
+    blocks:
     <BlockContent
       blocks={content}
       projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}

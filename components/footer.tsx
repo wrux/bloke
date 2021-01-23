@@ -1,7 +1,7 @@
 import React from 'react';
 import Container from './container';
 
-const Footer = () => (
+const Footer: React.FC = () => (
   <footer className="bg-accent-1 border-t border-accent-2">
     <Container>
       <div className="py-28 flex flex-col lg:flex-row items-center">
