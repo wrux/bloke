@@ -1,19 +1,19 @@
 import React from 'react';
+import Link from 'next/link';
 
 const Intro: React.FC = () => (
-  <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
+  <section className="flex-col md:flex-row flex md:items-center md:justify-between mt-16 mb-16 md:mb-12">
     <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
       Blog.
     </h1>
-    <h4 className="text-center md:text-left text-lg mt-5 md:pl-8">
-      A statically generated blog example using{' '}
-      <a
-        href="https://nextjs.org/"
-        className="underline hover:text-success duration-200 transition-colors"
-      >
-        Next.js
-      </a>
-      .
+    <h4 className="md:text-left text-lg mt-5 md:pl-8">
+      My travel blog from many{' '}
+      <Link href="/countries">
+        <a className="font-bold border-b-2 border-success hover:text-success duration-200 transition-colors">
+          Countries
+        </a>
+      </Link>{' '}
+      all around the world.
     </h4>
   </section>
 );

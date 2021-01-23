@@ -6,7 +6,7 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
     },
     {
       name: 'slug',
@@ -14,39 +14,39 @@ export default {
       type: 'slug',
       options: {
         source: 'title',
-        maxLength: 96
-      }
+        maxLength: 96,
+      },
     },
     {
       name: 'mainImage',
       title: 'Main image',
       type: 'image',
       options: {
-        hotspot: true
-      }
+        hotspot: true,
+      },
     },
     {
       name: 'countries',
       title: 'Countries',
       type: 'array',
-      of: [{type: 'reference', to: {type: 'country'}}]
+      of: [{ type: 'reference', to: { type: 'country' } }],
     },
     {
       name: 'publishedAt',
       title: 'Published at',
-      type: 'datetime'
+      type: 'datetime',
     },
     {
       name: 'body',
       title: 'Body',
-      type: 'blockContent'
-    }
+      type: 'blockContent',
+    },
   ],
 
   preview: {
     select: {
       title: 'title',
-      media: 'mainImage'
-    }
-  }
-}
+      media: 'mainImage',
+    },
+  },
+};

@@ -8,7 +8,11 @@ import Intro from '../components/intro';
 import Layout from '../components/layout';
 import { getAllPostsForHome } from '../lib/api';
 
-const Index = ({ allPosts }): JSX.Element => {
+type Props = {
+  allPosts: any[];
+};
+
+const Index: React.FC<Props> = ({ allPosts }): JSX.Element => {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
 

@@ -21,6 +21,15 @@ const postFields = `
   'coverImage': mainImage,
 `;
 
+const countryFields = `
+  _id,
+  name,
+  title,
+  'date': publishedAt,
+  'slug': slug.current,
+  description,
+`;
+
 const getClient = (preview) => (preview ? previewClient : client);
 
 export async function getPreviewPostBySlug(slug) {
@@ -70,4 +79,12 @@ export async function getPostAndMorePosts(slug, preview) {
     ),
   ]);
   return { post, morePosts: getUniquePosts(morePosts) };
+}
+
+export async function getAllCountries(preview) {
+  const results = await getClient(preview)
+    .fetch(`*[_type == "country"] | order(title asc){
+      ${countryFields}
+    }`);
+  return getUniquePosts(results);
 }

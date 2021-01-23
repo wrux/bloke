@@ -6,12 +6,21 @@ export default {
     {
       name: 'title',
       title: 'Title',
-      type: 'string'
+      type: 'string',
+    },
+    {
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
     },
     {
       name: 'description',
       title: 'Description',
-      type: 'text'
-    }
-  ]
-}
+      type: 'text',
+    },
+  ],
+};
