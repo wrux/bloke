@@ -1,15 +1,14 @@
-import BlockContent from '@sanity/block-content-to-react'
-import { Text, Image } from './blocks'
+import React from 'react';
+import BlockContent from '@sanity/block-content-to-react';
+import { Text, Image } from './blocks';
 
 const serializers = {
   types: {
-    block: props => Text(props),
-    image: props => Image(props),
+    block: (props) => Text(props),
+    image: (props) => Image(props),
   },
-  container: ({ children }) => (
-    <div className="blocks">{children}</div>
-  )
-}
+  container: ({ children }) => <div className="blocks">{children}</div>,
+};
 
 const PostBody = ({ content }) => (
   <div className="max-w-2xl mx-auto">
@@ -20,6 +19,6 @@ const PostBody = ({ content }) => (
       serializers={serializers}
     />
   </div>
-)
+);
 
-export default PostBody
+export default PostBody;

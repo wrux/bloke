@@ -1,3 +1,5 @@
-const TextBlock = ({ children }) => <div className="prose">{children}</div>
+import React from 'react';
 
-export default TextBlock
+const TextBlock = ({ children }) => <div className="prose">{children}</div>;
+
+export default TextBlock;

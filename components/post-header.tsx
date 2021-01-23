@@ -1,21 +1,20 @@
-import Date from './date'
-import CoverImage from './cover-image'
-import PostTitle from './post-title'
+import React from 'react';
+import Date from './date';
+import CoverImage from './cover-image';
+import PostTitle from './post-title';
 
-const PostHeader = ({ title, coverImage, date }) => {
-  return (
-    <>
-      <PostTitle>{title}</PostTitle>
-      <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
-        <CoverImage title={title} imageObject={coverImage} url={coverImage} />
+const PostHeader = ({ title, coverImage, date }) => (
+  <>
+    <PostTitle>{title}</PostTitle>
+    <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
+      <CoverImage title={title} imageObject={coverImage} />
+    </div>
+    <div className="max-w-2xl mx-auto">
+      <div className="mb-6 text-lg">
+        <Date dateString={date} />
       </div>
-      <div className="max-w-2xl mx-auto">
-        <div className="mb-6 text-lg">
-          <Date dateString={date} />
-        </div>
-      </div>
-    </>
-  )
-}
+    </div>
+  </>
+);
 
-export default PostHeader
+export default PostHeader;

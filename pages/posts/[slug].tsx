@@ -1,23 +1,24 @@
-import Head from 'next/head'
-import { useRouter } from 'next/router'
-import ErrorPage from 'next/error'
-import Container from '../../components/container'
-import PostBody from '../../components/post-body'
-import MoreStories from '../../components/more-stories'
-import Header from '../../components/header'
-import PostHeader from '../../components/post-header'
-import SectionSeparator from '../../components/section-separator'
-import Layout from '../../components/layout'
-import PostTitle from '../../components/post-title'
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api'
+import React from 'react';
+import Head from 'next/head';
+import { useRouter } from 'next/router';
+import ErrorPage from 'next/error';
+import Container from '../../components/container';
+import PostBody from '../../components/post-body';
+import MoreStories from '../../components/more-stories';
+import Header from '../../components/header';
+import PostHeader from '../../components/post-header';
+import SectionSeparator from '../../components/section-separator';
+import Layout from '../../components/layout';
+import PostTitle from '../../components/post-title';
+import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
 
-export default function Post({ post, morePosts, preview }) {
-  const router = useRouter()
+export default function Post({ post, morePosts }): JSX.Element {
+  const router = useRouter();
   if (!router.isFallback && !post?.slug) {
-    return <ErrorPage statusCode={404} />
+    return <ErrorPage statusCode={404} />;
   }
   return (
-    <Layout preview={preview}>
+    <Layout>
       <Container>
         <Header />
         {router.isFallback ? (
@@ -26,9 +27,7 @@ export default function Post({ post, morePosts, preview }) {
           <>
             <article>
               <Head>
-                <title>
-                  {post.title} | Blokg Blog
-                </title>
+                <title>{post.title} | Blokg Blog</title>
                 {/* <meta property="og:image" content={post.ogImage.url} /> */}
               </Head>
               <PostHeader
@@ -45,23 +44,23 @@ export default function Post({ post, morePosts, preview }) {
         )}
       </Container>
     </Layout>
-  )
+  );
 }
 
 export async function getStaticProps({ params, preview = false }) {
-  const data = await getPostAndMorePosts(params.slug, preview)
+  const data = await getPostAndMorePosts(params.slug, preview);
   return {
     props: {
       preview,
       post: data?.post || null,
       morePosts: data?.morePosts || null,
     },
-    revalidate: 1
-  }
+    revalidate: 1,
+  };
 }
 
 export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug()
+  const allPosts = await getAllPostsWithSlug();
   return {
     paths:
       allPosts?.map((post) => ({
@@ -70,5 +69,5 @@ export async function getStaticPaths() {
         },
       })) || [],
     fallback: true,
-  }
+  };
 }

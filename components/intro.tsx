@@ -1,4 +1,4 @@
-import { CMS_URL } from '../lib/constants'
+import React from 'react';
 
 const Intro = () => (
   <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
@@ -12,17 +12,10 @@ const Intro = () => (
         className="underline hover:text-success duration-200 transition-colors"
       >
         Next.js
-      </a>{' '}
-      and{' '}
-      <a
-        href={CMS_URL}
-        className="underline hover:text-success duration-200 transition-colors"
-      >
-        Sanity.io
       </a>
       .
     </h4>
   </section>
-)
+);
 
-export default Intro
+export default Intro;

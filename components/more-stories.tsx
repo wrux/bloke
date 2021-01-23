@@ -1,4 +1,5 @@
-import PostPreview from './post-preview'
+import React from 'react';
+import PostPreview from './post-preview';
 
 const MoreStories = ({ posts }) => (
   <section>
@@ -18,6 +19,6 @@ const MoreStories = ({ posts }) => (
       ))}
     </div>
   </section>
-)
+);
 
-export default MoreStories
+export default MoreStories;

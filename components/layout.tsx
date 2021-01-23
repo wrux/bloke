@@ -1,5 +1,6 @@
-import Footer from './footer'
-import Meta from './meta'
+import React from 'react';
+import Footer from './footer';
+import Meta from './meta';
 
 const Layout = ({ children }) => (
   <>
@@ -9,6 +10,6 @@ const Layout = ({ children }) => (
     </div>
     <Footer />
   </>
-)
+);
 
-export default Layout
+export default Layout;
