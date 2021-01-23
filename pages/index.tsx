@@ -23,7 +23,6 @@ const Index: React.FC<Props> = ({ allPosts }): JSX.Element => {
           <title>Welcome to Bloke Blog</title>
         </Head>
         <Container>
-          <Intro />
           {heroPost && (
             <HeroPost
               title={heroPost.title}
