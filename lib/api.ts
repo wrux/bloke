@@ -78,7 +78,7 @@ export async function getPostAndMorePosts(slug, preview) {
       { slug }
     ),
   ]);
-  return { post, morePosts: getUniquePosts(morePosts) };
+  return { post, morePosts: morePosts ? getUniquePosts(morePosts) : [] };
 }
 
 export async function getAllCountries(preview) {
@@ -86,5 +86,5 @@ export async function getAllCountries(preview) {
     .fetch(`*[_type == "country"] | order(title asc){
       ${countryFields}
     }`);
-  return getUniquePosts(results);
+  return results ? getUniquePosts(results) : [];
 }
