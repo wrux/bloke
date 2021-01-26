@@ -1,16 +1,33 @@
 import React from 'react';
-
-const Image: React.FC = ({ asset }) => {
-  console.log('Image asset', asset);
-  return <h1>image</h1>;
-};
+import {
+  getSanityRefId,
+  getImageDimensions,
+  imageBuilder,
+  ImageObject,
+} from '../../lib/sanity';
+import styles from './imageGrid.module.css';
 
 const ImageGridBlock: React.FC = ({ node }) => {
   const { images } = node;
-  // console.log('Image grid', images);
-  // <code>{JSON.stringify(node)}</code>
+
   return (
-    <div className="image-grid">{images.map((image) => Image(image))}</div>
+    <div className={styles.imagegrid}>
+      {images.map((image: ImageObject) => {
+        const { width, height } = getImageDimensions(image);
+        const scaledHeight = Math.floor((500 / width) * height);
+        return (
+          <img
+            // eslint-disable-next-line no-underscore-dangle
+            key={getSanityRefId(image)}
+            src={imageBuilder(image).width(500).height(scaledHeight).url()}
+            alt={image.alt ?? ''}
+            width={500}
+            height={scaledHeight}
+            loading="lazy"
+          />
+        );
+      })}
+    </div>
   );
 };
 

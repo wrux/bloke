@@ -2,13 +2,11 @@
 	"name": "bloke",
 	"private": true,
 	"version": "1.0.0",
-	"description": "",
-	"main": "package.json",
-	"author": "Callum Bonnyman <callum@bloke.blog>",
-	"license": "UNLICENSED",
-	"keywords": [
-		"sanity"
-	],
+	"author": "Callum Bonnyman <callumbonnyman@me.com>",
+	"scripts": {
+    "build": "sanity build",
+    "dev": "sanity start"
+  },
 	"dependencies": {
 		"@sanity/base": "^2.0.5",
 		"@sanity/components": "^2.0.5",

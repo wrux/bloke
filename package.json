@@ -1,6 +1,8 @@
 {
   "name": "bloke",
+  "private": true,
   "version": "1.0.0",
+  "author": "Callum Bonnyman <callumbonnyman@me.com>",
   "scripts": {
     "dev": "next",
     "build": "npm run build:sanity && pwd && npm run build:web",

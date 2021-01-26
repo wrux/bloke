@@ -1,0 +1,32 @@
+.imagegrid {
+  column-count: 2;
+  column-gap: 2rem;
+}
+
+@screen md {
+  .imagegrid {
+    column-count: 3;
+  }
+}
+
+.imagegrid img {
+  @apply mt-0;
+  @apply mb-8;
+  @apply bg-gray-300;
+  break-inside: avoid;
+}
+
+@supports (grid-template-rows: masonry) {
+  .imagegrid {
+    @apply grid;
+    @apply grid-rows-masonry;
+    @apply grid-cols-2;
+    column-count: unset;
+  }
+
+  @screen md {
+    .imagegrid {
+      @apply grid-cols-3;
+    }
+  }
+}
