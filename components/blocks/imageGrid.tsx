@@ -7,7 +7,13 @@ import {
 } from '../../lib/sanity';
 import styles from './imageGrid.module.css';
 
-const ImageGridBlock: React.FC = ({ node }) => {
+type Props = {
+  node: {
+    images: any[];
+  };
+};
+
+const ImageGridBlock: React.FC<Props> = ({ node }) => {
   const { images } = node;
 
   return (
