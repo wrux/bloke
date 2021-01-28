@@ -3,6 +3,11 @@
   column-gap: 2rem;
 }
 
+.imagegrid img {
+  max-width: 100%;
+  height: auto;
+}
+
 @screen md {
   .imagegrid {
     column-count: 3;
@@ -10,23 +15,23 @@
 }
 
 .imagegrid img {
-  @apply mt-0;
-  @apply mb-8;
-  @apply bg-gray-300;
+  margin-top: 0;
+  margin-bottom: 2rem;
+  background-color: rgba(243, 244, 246, 0.8);
   break-inside: avoid;
 }
 
 @supports (grid-template-rows: masonry) {
   .imagegrid {
-    @apply grid;
-    @apply grid-rows-masonry;
-    @apply grid-cols-2;
+    display: grid;
+    grid-template-rows: masonry;
+    grid-template-columns: repeat(2, 1fr);
     column-count: unset;
   }
 
   @screen md {
     .imagegrid {
-      @apply grid-cols-3;
+      grid-template-columns: repeat(3, 1fr);
     }
   }
 }
