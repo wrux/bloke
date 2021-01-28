@@ -16,7 +16,10 @@ const Countries: React.FC<Props> = ({ allCountries }) => (
     <Container>
       <Header />
       <div className="md:flex gap-10 mb-10 md:mb-16 items-baseline">
-        <PostTitle className="md:w-1/2 lg:w-5/12">Countries</PostTitle>
+        <div>
+          <PostTitle className="md:w-1/2 lg:w-5/12">Countries</PostTitle>
+          <p className="mb-10 text-xl">Country listing pages coming soon.</p>
+        </div>
         <div>
           {allCountries.map((country) => (
             // eslint-disable-next-line no-underscore-dangle
