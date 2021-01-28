@@ -20,12 +20,11 @@ const CoverImage: React.FC<Props> = ({
   const image = (
     <Image
       src={imageBuilder(imageObject).width(1240).height(540).url()}
-      alt={`Cover for ${title}`}
+      alt={imageObject.alt ?? `Cover for ${title}`}
       width={1240}
       height={540}
       layout="responsive"
       priority={priority}
-      loading={priority ? 'eager' : 'lazy'}
       className={cn('shadow-small', {
         'hover:shadow-medium transition-shadow duration-200': slug,
       })}

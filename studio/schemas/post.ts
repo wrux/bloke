@@ -24,6 +24,19 @@ export default {
       options: {
         hotspot: true,
       },
+      fields: [
+        {
+          name: 'caption',
+          title: 'Caption',
+          type: 'string',
+        },
+        {
+          name: 'alt',
+          title: 'Alternative text',
+          description: 'Important for accessibility and SEO',
+          type: 'string',
+        },
+      ],
     },
     {
       name: 'countries',

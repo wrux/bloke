@@ -8,6 +8,9 @@ module.exports = {
         success: '#0070f3',
         cyan: '#79FFE1',
       },
+      gridTemplateRows: {
+        masonry: 'masonry',
+      },
       spacing: {
         28: '7rem',
       },
