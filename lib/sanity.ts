@@ -67,6 +67,13 @@ export const getImageDimensions = (
 export const imageBuilder = (source: SanityImageSource): ImageUrlBuilder =>
   createImageUrlBuilder(config).image(source);
 
+// export const imageBuilder = (source: SanityImageSource): ImageUrlBuilder =>
+//   createImageUrlBuilder({
+//     dataset: 'staging',
+//     projectId: '',
+//     useCdn: false,
+//   }).image(source);
+
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
 
 export const client: PicoSanity = createClient(config);
