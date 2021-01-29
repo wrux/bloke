@@ -3,11 +3,6 @@
   column-gap: 2rem;
 }
 
-.imagegrid img {
-  max-width: 100%;
-  height: auto;
-}
-
 @screen md {
   .imagegrid {
     column-count: 3;

@@ -13,7 +13,12 @@ const PostHeader: React.FC<Props> = ({ title, coverImage, date }) => (
   <>
     <PostTitle>{title}</PostTitle>
     <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
-      <CoverImage title={title} imageObject={coverImage} priority />
+      <CoverImage
+        title={title}
+        imageObject={coverImage}
+        width={1240}
+        priority
+      />
     </div>
     <div className="max-w-2xl mx-auto">
       <div className="mb-6 text-lg">
