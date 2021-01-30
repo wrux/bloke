@@ -6,6 +6,7 @@ import {
   SanityReference,
   ImageUrlBuilderOptionsWithAsset,
 } from '@sanity/image-url/lib/types/types';
+import { Slug } from '@sanity/types';
 import {
   createClient,
   createImageUrlBuilder,
@@ -29,6 +30,14 @@ export type SanityImageDimensions = {
 export type ImageObject = SanityImageSource & {
   alt?: string;
   caption?: string;
+};
+
+export const urlResolver = (type: string, slug: Slug): string => {
+  if (type === 'country') {
+    return `/country/${slug.current}`;
+  }
+
+  return '/';
 };
 
 export const getSanityRefId = (image: ImageObject): string => {

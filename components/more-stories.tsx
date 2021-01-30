@@ -16,6 +16,7 @@ const MoreStories: React.FC<Props> = ({ posts }) => (
           key={post.slug}
           title={post.title}
           coverImage={post.coverImage}
+          countries={post.countries}
           date={post.date}
           slug={post.slug}
           excerpt={post.excerpt}

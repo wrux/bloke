@@ -26,7 +26,7 @@ const Countries: React.FC<Props> = ({ allCountries }) => (
             <h3 key={country._id} className="mb-5">
               <Link href={`/country/${country.slug}`}>
                 <a className="text-3xl mb-3 leading-snug" rel="bookmark">
-                  {country.title}
+                  {country.name}
                 </a>
               </Link>
             </h3>

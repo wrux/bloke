@@ -34,6 +34,7 @@ export default function Post({ post, morePosts }): JSX.Element {
                 title={post.title}
                 coverImage={post.coverImage}
                 date={post.date}
+                countries={post.countries}
               />
               <PostBody content={post.body} />
             </article>

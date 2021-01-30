@@ -50,6 +50,11 @@ export default {
       type: 'datetime',
     },
     {
+      name: 'excerpt',
+      title: 'Excerpt',
+      type: 'text',
+    },
+    {
       name: 'body',
       title: 'Body',
       type: 'blockContent',
