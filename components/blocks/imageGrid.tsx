@@ -16,6 +16,10 @@ type Props = {
 const ImageGridBlock: React.FC<Props> = ({ node }) => {
   const { images } = node;
 
+  if (!images || images.length === 0) {
+    return null;
+  }
+
   return (
     <div className={styles.imagegrid}>
       {images.map((image: ImageObject) => {

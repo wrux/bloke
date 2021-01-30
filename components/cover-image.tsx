@@ -35,9 +35,6 @@ const CoverImage: React.FC<Props> = ({
       alt={imageObject.alt ?? `Cover for ${title}`}
       layout="responsive"
       priority={priority}
-      className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
-      })}
     />
   );
 
@@ -45,7 +42,12 @@ const CoverImage: React.FC<Props> = ({
     <div className="-mx-5 sm:mx-0 bg-gray-300">
       {slug ? (
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
-          <a aria-label={title}>{image}</a>
+          <a
+            aria-label={title}
+            className="block shadow-lg hover:shadow-xl focus:shadow-xl transition-shadow duration-200"
+          >
+            {image}
+          </a>
         </Link>
       ) : (
         image
