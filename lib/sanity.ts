@@ -11,6 +11,7 @@ import {
   createImageUrlBuilder,
   createPreviewSubscriptionHook,
 } from 'next-sanity';
+import { UseNextSanityImageBuilderOptions } from 'next-sanity-image';
 import { PicoSanity } from 'picosanity';
 
 const config = {
@@ -54,7 +55,7 @@ export const getSanityRefId = (image: ImageObject): string => {
 
 export const custom16by9ImageBuilder = (
   imageUrlBuilder: ImageUrlBuilder,
-  options: ImageUrlBuilderOptionsWithAsset
+  options: UseNextSanityImageBuilderOptions
 ): ImageUrlBuilder => {
   const width =
     options.width || Math.min(options.originalImageDimensions.width, 1240);
