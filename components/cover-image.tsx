@@ -2,12 +2,17 @@ import React from 'react';
 import cn from 'classnames';
 import Link from 'next/link';
 import Image from 'next/image';
-import { imageBuilder, getImageDimensions } from '../lib/sanity';
+import { ImageUrlBuilder, useNextSanityImage } from 'next-sanity-image';
+import {
+  ImageUrlBuilderOptions,
+  ImageUrlBuilderOptionsWithAsset,
+} from '@sanity/image-url/lib/types/types';
+import { client, custom16by9ImageBuilder, ImageObject } from '../lib/sanity';
 
 type Props = {
   title: string;
-  imageObject: any;
-  width?: number;
+  imageObject: ImageObject;
+  sizes?: string;
   slug?: string;
   priority?: boolean;
 };
@@ -15,17 +20,19 @@ type Props = {
 const CoverImage: React.FC<Props> = ({
   title,
   imageObject,
-  width = 600,
+  sizes = null,
   slug = null,
   priority = false,
 }) => {
-  const height = Math.floor(width * 0.5625); // 16:9
+  const imageProps = useNextSanityImage(client, imageObject, {
+    imageBuilder: custom16by9ImageBuilder,
+  });
+
   const image = (
     <Image
-      src={imageBuilder(imageObject).width(width).height(height).url()}
+      {...imageProps}
+      sizes={sizes}
       alt={imageObject.alt ?? `Cover for ${title}`}
-      width={width}
-      height={height}
       layout="responsive"
       priority={priority}
       className={cn('shadow-small', {
@@ -35,7 +42,7 @@ const CoverImage: React.FC<Props> = ({
   );
 
   return (
-    <div className="-mx-5 sm:mx-0">
+    <div className="-mx-5 sm:mx-0 bg-gray-300">
       {slug ? (
         <Link as={`/posts/${slug}`} href="/posts/[slug]">
           <a aria-label={title}>{image}</a>

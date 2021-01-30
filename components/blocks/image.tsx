@@ -1,10 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import {
-  getImageDimensions,
-  imageBuilder,
-  ImageObject,
-} from '../../lib/sanity';
+import { useNextSanityImage } from 'next-sanity-image';
+import { client, ImageObject } from '../../lib/sanity';
 
 type Props = {
   node: {
@@ -16,17 +13,15 @@ type Props = {
 
 const ImageBlock: React.FC<Props> = ({ node }) => {
   const { alt, asset, caption } = node;
-  const { width, height } = getImageDimensions(asset);
-  const scaledHeight = Math.floor((1056 / width) * height);
+  const imageProps = useNextSanityImage(client, asset);
 
   return (
     <figure>
       <Image
-        src={imageBuilder(asset).width(1056).height(scaledHeight).url()}
+        {...imageProps}
+        sizes="(max-width: 799px) 100vw, (max-width: 1023) 800px, (max-width: 1279) 928px"
         alt={alt ?? ''}
-        width={1056}
-        height={scaledHeight}
-        loading="lazy"
+        className="bg-gray-300"
       />
       {caption && (
         <figcaption className="px-5 sm:px-12 md:px-16 lg:px-32 xl:px-48">

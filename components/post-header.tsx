@@ -16,7 +16,7 @@ const PostHeader: React.FC<Props> = ({ title, coverImage, date }) => (
       <CoverImage
         title={title}
         imageObject={coverImage}
-        width={1240}
+        sizes="(max-width: 639px) 100vw, (max-width: 767px) 600px, (max-width: 1023px) 728px, (max-width: 1279px) 984px, 1240px"
         priority
       />
     </div>

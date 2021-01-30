@@ -4,12 +4,14 @@ import {
   SanityImageSource,
   SanityImageObject,
   SanityReference,
+  ImageUrlBuilderOptionsWithAsset,
 } from '@sanity/image-url/lib/types/types';
 import {
   createClient,
   createImageUrlBuilder,
   createPreviewSubscriptionHook,
 } from 'next-sanity';
+import { UseNextSanityImageBuilderOptions } from 'next-sanity-image';
 import { PicoSanity } from 'picosanity';
 
 const config = {
@@ -51,6 +53,15 @@ export const getSanityRefId = (image: ImageObject): string => {
   return ref._ref || img._id || '';
 };
 
+export const custom16by9ImageBuilder = (
+  imageUrlBuilder: ImageUrlBuilder,
+  options: UseNextSanityImageBuilderOptions
+): ImageUrlBuilder => {
+  const width =
+    options.width || Math.min(options.originalImageDimensions.width, 1240);
+  return imageUrlBuilder.width(width).height(Math.floor(width * 0.5625));
+};
+
 export const getImageDimensions = (
   image: SanityImageSource
 ): SanityImageDimensions => {
@@ -66,13 +77,6 @@ export const getImageDimensions = (
 
 export const imageBuilder = (source: SanityImageSource): ImageUrlBuilder =>
   createImageUrlBuilder(config).image(source);
-
-// export const imageBuilder = (source: SanityImageSource): ImageUrlBuilder =>
-//   createImageUrlBuilder({
-//     dataset: 'staging',
-//     projectId: '',
-//     useCdn: false,
-//   }).image(source);
 
 export const usePreviewSubscription = createPreviewSubscriptionHook(config);
 
