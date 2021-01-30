@@ -12,7 +12,7 @@ type Props = {
 const PostHeader: React.FC<Props> = ({ title, coverImage, date }) => (
   <>
     <PostTitle>{title}</PostTitle>
-    <div className="mb-8 md:mb-16 -mx-5 sm:mx-0">
+    <div className="mb-8 md:mb-16">
       <CoverImage
         title={title}
         imageObject={coverImage}

@@ -1,6 +1,13 @@
 module.exports = {
   theme: {
     extend: {
+      typography: {
+        xl: {
+          css: {
+            'figure figcaption': { marginTop: `${8 / 12}em` },
+          },
+        },
+      },
       colors: {
         'accent-1': '#FAFAFA',
         'accent-2': '#EAEAEA',
