@@ -22,6 +22,7 @@
     "date-fns": "2.15.0",
     "next": "latest",
     "next-sanity": "^0.1.5",
+    "next-sanity-image": "^1.0.1",
     "picosanity": "^2.1.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
