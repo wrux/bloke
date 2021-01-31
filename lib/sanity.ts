@@ -36,7 +36,9 @@ export const urlResolver = (type: string, slug: Slug): string => {
   if (type === 'country') {
     return `/country/${slug.current}`;
   }
-
+  if (type === 'post') {
+    return `/post/${slug.current}`;
+  }
   return '/';
 };
 
