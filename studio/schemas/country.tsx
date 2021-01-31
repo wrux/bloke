@@ -1,3 +1,6 @@
+import React from 'react';
+import { countryCodeEmoji } from 'country-code-emoji';
+
 export default {
   name: 'country',
   title: 'Country',
@@ -28,4 +31,21 @@ export default {
       type: 'text',
     },
   ],
+  preview: {
+    select: {
+      title: 'name',
+      subtitle: 'countryCode',
+      countryCode: 'countryCode',
+    },
+    prepare({ title, countryCode }) {
+      return {
+        title,
+        media: (
+          <span style={{ fontSize: '1.5rem' }}>
+            {countryCode ? countryCodeEmoji(countryCode) : '🌍'}
+          </span>
+        ),
+      };
+    },
+  },
 };

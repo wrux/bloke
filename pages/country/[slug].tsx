@@ -60,7 +60,6 @@ export default function Country({ country, posts }): JSX.Element {
 
 export async function getStaticProps({ params, preview = false }) {
   const data = await getCountryAndPosts(params.slug, preview);
-  console.log('data', data);
   return {
     props: {
       preview,
@@ -73,7 +72,6 @@ export async function getStaticProps({ params, preview = false }) {
 
 export async function getStaticPaths() {
   const allCountries = await getAllCountriesWithSlug();
-  console.log('allCountries', allCountries);
   return {
     paths:
       allCountries?.map((country) => ({
