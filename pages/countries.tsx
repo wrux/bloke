@@ -15,17 +15,16 @@ const Countries: React.FC<Props> = ({ allCountries }) => (
   <Layout>
     <Container>
       <Header />
-      <div className="md:flex gap-10 mb-10 md:mb-16 items-baseline">
+      <div className="md:flex gap-10 lg:gap-24 mb-10 md:mb-16 items-baseline">
         <div>
           <PostTitle className="md:w-1/2 lg:w-5/12">Countries</PostTitle>
-          <p className="mb-10 text-xl">Country listing pages coming soon.</p>
         </div>
         <div>
           {allCountries.map((country) => (
             // eslint-disable-next-line no-underscore-dangle
             <h3 key={country._id} className="mb-5">
               <Link href={`/country/${country.slug}`}>
-                <a className="text-3xl mb-3 leading-snug" rel="bookmark">
+                <a className="text-3xl mb-3 link leading-snug" rel="bookmark">
                   {country.name}
                 </a>
               </Link>

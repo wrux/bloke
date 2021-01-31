@@ -21,6 +21,7 @@
     "@tailwindcss/typography": "^0.4.0",
     "autoprefixer": "^10.2.4",
     "classnames": "2.2.6",
+    "country-code-emoji": "^2.2.0",
     "date-fns": "2.15.0",
     "next": "latest",
     "next-sanity": "^0.1.5",

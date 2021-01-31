@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Container from '../../components/container';
 import PostBody from '../../components/post-body';
-import MoreStories from '../../components/more-stories';
+import Stories from '../../components/stories';
 import Header from '../../components/header';
 import PostHeader from '../../components/post-header';
 import SectionSeparator from '../../components/section-separator';
@@ -40,7 +40,9 @@ export default function Post({ post, morePosts }): JSX.Element {
             </article>
 
             <SectionSeparator />
-            {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+            {morePosts.length > 0 && (
+              <Stories posts={morePosts} title="More Stories" />
+            )}
           </>
         )}
       </Container>
