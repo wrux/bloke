@@ -1,12 +1,7 @@
 import React from 'react';
-import cn from 'classnames';
 import Link from 'next/link';
 import Image from 'next/image';
-import { ImageUrlBuilder, useNextSanityImage } from 'next-sanity-image';
-import {
-  ImageUrlBuilderOptions,
-  ImageUrlBuilderOptionsWithAsset,
-} from '@sanity/image-url/lib/types/types';
+import { useNextSanityImage } from 'next-sanity-image';
 import { client, custom16by9ImageBuilder, ImageObject } from '../lib/sanity';
 
 type Props = {

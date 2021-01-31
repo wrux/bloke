@@ -2,7 +2,7 @@ import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
 import Container from '../components/container';
-import MoreStories from '../components/more-stories';
+import Stories from '../components/stories';
 import HeroPost from '../components/hero-post';
 import Intro from '../components/intro';
 import Layout from '../components/layout';
@@ -33,7 +33,9 @@ const Index: React.FC<Props> = ({ allPosts }): JSX.Element => {
               excerpt={heroPost.excerpt}
             />
           )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
+          {morePosts.length > 0 && (
+            <Stories posts={morePosts} title="More Stories" />
+          )}
         </Container>
       </Layout>
     </>

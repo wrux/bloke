@@ -17,6 +17,7 @@ const postFields = `
   title,
   'date': publishedAt,
   excerpt,
+  'countries': countries[]->{countryCode, name, slug},
   'slug': slug.current,
   'coverImage': mainImage,
 `;
@@ -29,6 +30,13 @@ const countryFields = `
   'slug': slug.current,
   description,
 `;
+
+// List posts in the country:
+//
+// *[_type=="country"]{
+// 	title,
+//   "relatedPosts": *[_type=='post' && references(^._id)]{ title }
+// }
 
 const getClient = (preview) => (preview ? previewClient : client);
 

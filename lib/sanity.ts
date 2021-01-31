@@ -6,6 +6,7 @@ import {
   SanityReference,
   ImageUrlBuilderOptionsWithAsset,
 } from '@sanity/image-url/lib/types/types';
+import { Slug } from '@sanity/types';
 import {
   createClient,
   createImageUrlBuilder,
@@ -29,6 +30,14 @@ export type SanityImageDimensions = {
 export type ImageObject = SanityImageSource & {
   alt?: string;
   caption?: string;
+};
+
+export const urlResolver = (type: string, slug: Slug): string => {
+  if (type === 'country') {
+    return `/country/${slug.current}`;
+  }
+
+  return '/';
 };
 
 export const getSanityRefId = (image: ImageObject): string => {
@@ -90,5 +99,16 @@ export const previewClient: PicoSanity = createClient({
 
 export const getClient = (usePreview: boolean): PicoSanity =>
   usePreview ? previewClient : client;
+
+export const getUniquePosts = (posts) => {
+  const slugs = new Set();
+  return posts.filter((post) => {
+    if (slugs.has(post.slug)) {
+      return false;
+    }
+    slugs.add(post.slug);
+    return true;
+  });
+};
 
 export default client;

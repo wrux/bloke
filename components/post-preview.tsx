@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
-import Date from './date';
+import CountryList from './country-list';
 import CoverImage from './cover-image';
+import Date from './date';
+import { ImageObject } from '../lib/sanity';
 
 type Props = {
   title: string;
-  coverImage?: any;
+  coverImage?: ImageObject;
+  countries?: any[];
   date: string;
   excerpt?: string;
   slug: string;
@@ -14,11 +17,12 @@ type Props = {
 const PostPreview: React.FC<Props> = ({
   title,
   coverImage,
+  countries,
   date,
   excerpt,
   slug,
 }) => (
-  <div>
+  <article>
     <div className="mb-5">
       <CoverImage
         slug={slug}
@@ -29,14 +33,15 @@ const PostPreview: React.FC<Props> = ({
     </div>
     <h3 className="text-3xl mb-3 leading-snug">
       <Link as={`/posts/${slug}`} href="/posts/[slug]">
-        <a className="hover:underline">{title}</a>
+        <a className="link">{title}</a>
       </Link>
     </h3>
     <div className="text-lg mb-4">
       <Date dateString={date} />
     </div>
-    <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-  </div>
+    {countries && <CountryList countries={countries} />}
+    {excerpt && <p className="text-lg leading-relaxed mb-4">{excerpt}</p>}
+  </article>
 );
 
 export default PostPreview;

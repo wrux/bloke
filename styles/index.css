@@ -3,3 +3,13 @@
 /* purgecss end ignore */
 @tailwind components;
 @tailwind utilities;
+
+
+@layer utilities {
+  .link {
+    @apply
+      font-bold
+      hover:text-success
+      hover:underline;
+  }
+}

@@ -1,17 +1,25 @@
 import React from 'react';
-import Date from './date';
 import CoverImage from './cover-image';
+import CountryList from './country-list';
+import Date from './date';
 import PostTitle from './post-title';
 
 type Props = {
   title: string;
   coverImage?: any;
+  countries?: any[];
   date: string;
 };
 
-const PostHeader: React.FC<Props> = ({ title, coverImage, date }) => (
+const PostHeader: React.FC<Props> = ({
+  title,
+  coverImage,
+  countries,
+  date,
+}) => (
   <>
     <PostTitle>{title}</PostTitle>
+    {countries && <CountryList countries={countries} />}
     <div className="mb-8 md:mb-16">
       <CoverImage
         title={title}
