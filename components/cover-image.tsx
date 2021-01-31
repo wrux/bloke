@@ -2,13 +2,19 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useNextSanityImage } from 'next-sanity-image';
-import { client, custom16by9ImageBuilder, ImageObject } from '../lib/sanity';
+import { Slug } from '@sanity/types';
+import {
+  client,
+  custom16by9ImageBuilder,
+  ImageObject,
+  urlResolver,
+} from '../lib/sanity';
 
 type Props = {
   title: string;
   imageObject: ImageObject;
   sizes?: string;
-  slug?: string;
+  slug?: Slug;
   priority?: boolean;
 };
 
@@ -36,7 +42,7 @@ const CoverImage: React.FC<Props> = ({
   return (
     <div className="-mx-5 sm:mx-0 bg-gray-300">
       {slug ? (
-        <Link as={`/posts/${slug}`} href="/posts/[slug]">
+        <Link href={urlResolver('post', slug)}>
           <a
             aria-label={title}
             className="block shadow-lg hover:shadow-xl focus:shadow-xl transition-shadow duration-200"

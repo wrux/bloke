@@ -6,7 +6,7 @@ const countryFields = `
   title,
   countryCode,
   'date': publishedAt,
-  'slug': slug.current,
+  'slug': slug,
   description,
 `;
 
@@ -56,7 +56,7 @@ export async function getCountryAndPosts(slug, preview) {
             'date': publishedAt,
             excerpt,
             'countries': countries[]->{countryCode, name, slug},
-            'slug': slug.current,
+            'slug': slug,
             'coverImage': mainImage,
           }
         }`,
@@ -66,34 +66,6 @@ export async function getCountryAndPosts(slug, preview) {
   ]);
   return { country, posts: posts ? getUniquePosts(posts) : [] };
 }
-// export async function getCountryAndPosts(slug, preview) {
-//   const country = await getClient(preview)
-//     .fetch(
-//       `*[_type == "country" && slug.current == $slug] | order(title asc) {
-//       ${countryFields}
-//     }`,
-//       { slug }
-//     )
-//     .then((res) => res?.[0]);
-//   const posts = await getClient(preview)
-//     .fetch(
-//       `*[_type=="country" && slug.current == $slug] {
-//         "posts": *[_type=='post' && references(^._id)] {
-//           _id,
-//           name,
-//           title,
-//           'date': publishedAt,
-//           excerpt,
-//           'countries': countries[]->{name, slug},
-//           'slug': slug.current,
-//           'coverImage': mainImage,
-//         }
-//       }`,
-//       { slug }
-//     )
-//     .then((res) => res?.[0].posts);
-//   return { country, posts };
-// }
 
 export async function getAllCountries(preview) {
   const results = await getClient(preview)

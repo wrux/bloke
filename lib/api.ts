@@ -18,7 +18,7 @@ const postFields = `
   'date': publishedAt,
   excerpt,
   'countries': countries[]->{countryCode, name, slug},
-  'slug': slug.current,
+  'slug': slug,
   'coverImage': mainImage,
 `;
 
@@ -27,7 +27,7 @@ const countryFields = `
   name,
   title,
   'date': publishedAt,
-  'slug': slug.current,
+  'slug': slug,
   description,
 `;
 

@@ -1,9 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
+import { Slug } from '@sanity/types';
 import CountryList from './country-list';
 import CoverImage from './cover-image';
 import Date from './date';
-import { ImageObject } from '../lib/sanity';
+import { ImageObject, urlResolver } from '../lib/sanity';
 
 type Props = {
   title: string;
@@ -11,7 +12,7 @@ type Props = {
   countries?: any[];
   date: string;
   excerpt?: string;
-  slug: string;
+  slug: Slug;
 };
 
 const PostPreview: React.FC<Props> = ({
@@ -32,7 +33,7 @@ const PostPreview: React.FC<Props> = ({
       />
     </div>
     <h3 className="text-3xl mb-3 leading-snug">
-      <Link as={`/posts/${slug}`} href="/posts/[slug]">
+      <Link href={urlResolver('post', slug)}>
         <a className="link">{title}</a>
       </Link>
     </h3>

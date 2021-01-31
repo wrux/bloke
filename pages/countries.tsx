@@ -6,6 +6,7 @@ import Header from '../components/header';
 import Layout from '../components/layout';
 import { getAllCountries } from '../lib/api';
 import PostTitle from '../components/post-title';
+import { urlResolver } from '../lib/sanity';
 
 type Props = {
   allCountries: any[];
@@ -23,7 +24,7 @@ const Countries: React.FC<Props> = ({ allCountries }) => (
           {allCountries.map((country) => (
             // eslint-disable-next-line no-underscore-dangle
             <h3 key={country._id} className="mb-5">
-              <Link href={`/country/${country.slug}`}>
+              <Link href={urlResolver('country', country.slug)}>
                 <a className="text-3xl mb-3 link leading-snug" rel="bookmark">
                   {country.name}
                 </a>
