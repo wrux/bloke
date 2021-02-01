@@ -5,7 +5,14 @@ class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <script
+            async
+            defer
+            data-domain="bloke.blog"
+            src="https://plausible.io/js/plausible.js"
+          />
+        </Head>
         <body>
           <Main />
           <NextScript />
