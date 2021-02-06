@@ -40,10 +40,15 @@ const ImageGridBlock: React.FC<Props> = ({ node }) => {
   if (images.length < 5) {
     return (
       <div
-        className={classnames('grid', 'gap-3 sm:gap-6 md:gap-8', {
-          'grid-cols-2': images.length % 2 === 0,
-          'sm:grid-cols-3': images.length === 3,
-        })}
+        className={classnames(
+          'grid',
+          'gap-3 sm:gap-6 md:gap-8',
+          'items-center',
+          {
+            'grid-cols-2': images.length % 2 === 0,
+            'sm:grid-cols-3': images.length === 3,
+          }
+        )}
       >
         {images.map((image: ImageObject) => (
           <div key={getSanityRefId(image)}>
