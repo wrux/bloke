@@ -1,9 +1,13 @@
-.imagegrid {
+/**
+ * Image masonry grid.
+ */
+
+.masonry {
   column-count: 2;
   column-gap: 0.75rem;
 }
 
-.imagegrid img {
+.masonry img {
   @apply mt-0;
   @apply mb-3;
   background-color: rgba(243, 244, 246, 0.8);
@@ -11,20 +15,20 @@
 }
 
 @screen md {
-  .imagegrid {
+  .masonry {
     column-count: 3;
     column-gap: 2rem;
   }
 
-  .imagegrid,
-  .imagegrid img {
+  .masonry,
+  .masonry img {
     @apply mb-8;
     @apply mb-8;
   }
 }
 
 @supports (grid-template-rows: masonry) {
-  .imagegrid {
+  .masonry {
     @apply grid;
     @apply grid-rows-masonry;
     @apply grid-cols-2;
@@ -32,7 +36,7 @@
   }
 
   @screen md {
-    .imagegrid {
+    .masonry {
       @apply grid-cols-3;
     }
   }
