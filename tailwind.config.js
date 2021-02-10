@@ -20,6 +20,11 @@ module.exports = {
         'accent-7': '#333',
         success: '#0070f3',
         cyan: '#79FFE1',
+        brand: {
+          light: '#5a3370',
+          DEFAULT: '#25103f',
+          dark: '#010102',
+        },
       },
       gridTemplateRows: {
         masonry: 'masonry',
