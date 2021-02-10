@@ -46,14 +46,14 @@ export async function getPreviewPostBySlug(slug) {
       ${postFields}
       body
     }`,
-    { slug }
+    { slug },
   );
   return data[0];
 }
 
 export async function getAllPostsWithSlug() {
   const data = await client.fetch(
-    '*[_type == "post"]{ \'slug\': slug.current }'
+    '*[_type == "post"]{ \'slug\': slug.current }',
   );
   return data;
 }
@@ -75,7 +75,7 @@ export async function getPostAndMorePosts(slug, preview) {
         ${postFields}
         body,
       }`,
-        { slug }
+        { slug },
       )
       .then((res) => res?.[0]),
     curClient.fetch(
@@ -83,7 +83,7 @@ export async function getPostAndMorePosts(slug, preview) {
         ${postFields}
         body,
       }[0...2]`,
-      { slug }
+      { slug },
     ),
   ]);
   return { post, morePosts: morePosts ? getUniquePosts(morePosts) : [] };
