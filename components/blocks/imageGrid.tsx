@@ -8,6 +8,7 @@ import {
   getImageDimensions,
   imageBuilder,
   ImageObject,
+  customImageBuilder,
 } from '@lib/sanity';
 import styles from './imageGrid.module.css';
 
@@ -22,10 +23,11 @@ const GridImage: React.FC<{ image: ImageObject; sizes?: string }> = ({
   sizes,
 }) => (
   <Image
-    {...useNextSanityImage(client, image)}
+    {...useNextSanityImage(client, image, {
+      imageBuilder: customImageBuilder,
+    })}
     sizes={sizes}
     alt={image.alt}
-    layout="responsive"
     className="bg-gray-100"
   />
 );
@@ -47,7 +49,7 @@ const ImageGridBlock: React.FC<Props> = ({ node }) => {
           {
             'grid-cols-2': images.length % 2 === 0,
             'sm:grid-cols-3': images.length === 3,
-          },
+          }
         )}
       >
         {images.map((image: ImageObject) => (
@@ -75,7 +77,11 @@ const ImageGridBlock: React.FC<Props> = ({ node }) => {
           <img
             // eslint-disable-next-line no-underscore-dangle
             key={getSanityRefId(image)}
-            src={imageBuilder(image).width(500).height(scaledHeight).url()}
+            src={imageBuilder(image)
+              .width(500)
+              .height(scaledHeight)
+              .format('webp')
+              .url()}
             alt={image.alt ?? ''}
             width={500}
             height={scaledHeight}

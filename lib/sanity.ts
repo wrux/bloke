@@ -66,17 +66,31 @@ export const getSanityRefId = (image: ImageObject): string => {
 
 export const custom16by9ImageBuilder = (
   imageUrlBuilder: ImageUrlBuilder,
-  options: UseNextSanityImageBuilderOptions,
+  options: UseNextSanityImageBuilderOptions
 ): ImageUrlBuilder => {
   const width =
     options.width || Math.min(options.originalImageDimensions.width, 1240);
-  return imageUrlBuilder.width(width).height(Math.floor(width * 0.5625));
+  return imageUrlBuilder
+    .width(width)
+    .height(Math.floor(width * 0.5625))
+    .format('webp');
+};
+
+export const customImageBuilder = (
+  imageUrlBuilder: ImageUrlBuilder,
+  options: UseNextSanityImageBuilderOptions
+): ImageUrlBuilder => {
+  const width =
+    options.width || Math.min(options.originalImageDimensions.width, 1240);
+  return imageUrlBuilder
+    .width(width)
+    .height(Math.floor(width / options.originalImageDimensions.aspectRatio))
+    .format('webp');
 };
 
 export const getImageDimensions = (
-  image: SanityImageSource,
+  image: SanityImageSource
 ): SanityImageDimensions => {
-  // eslint-disable-next-line no-underscore-dangle
   const id = getSanityRefId(image);
   const dimensions = id.split('-')[2];
   const [width, height] = dimensions

@@ -40,7 +40,7 @@ const CoverImage: React.FC<Props> = ({
   );
 
   return (
-    <div className="-mx-5 sm:mx-0 bg-gray-300">
+    <div className="-mx-5 bg-gray-300 sm:mx-0">
       {slug ? (
         <Link href={urlResolver('post', slug)}>
           <a
