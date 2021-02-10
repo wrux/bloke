@@ -8,7 +8,7 @@ import {
   getImageDimensions,
   imageBuilder,
   ImageObject,
-} from '../../lib/sanity';
+} from '@lib/sanity';
 import styles from './imageGrid.module.css';
 
 type Props = {

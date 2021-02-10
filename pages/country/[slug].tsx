@@ -3,15 +3,12 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import countryCodeEmoji from 'country-code-emoji';
-import Container from '../../components/container';
-import Layout from '../../components/layout';
-import {
-  getAllCountriesWithSlug,
-  getCountryAndPosts,
-} from '../../lib/api/country';
-import Header from '../../components/header';
-import PostTitle from '../../components/post-title';
-import Stories from '../../components/stories';
+import Container from '@components/container';
+import Layout from '@components/layout';
+import Header from '@components/header';
+import PostTitle from '@components/post-title';
+import Stories from '@components/stories';
+import { getAllCountriesWithSlug, getCountryAndPosts } from '@lib/api/country';
 
 const CountryBody = ({ country, posts }) => {
   const emoji = country.countryCode

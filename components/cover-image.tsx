@@ -8,7 +8,7 @@ import {
   custom16by9ImageBuilder,
   ImageObject,
   urlResolver,
-} from '../lib/sanity';
+} from '@lib/sanity';
 
 type Props = {
   title: string;

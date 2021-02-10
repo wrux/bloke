@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Slug } from '@sanity/types';
 import countryCodeEmoji from 'country-code-emoji';
-import { urlResolver } from '../lib/sanity';
+import { urlResolver } from '@lib/sanity';
 
 export type CountryLinkProps = {
   name: string;

@@ -1,9 +1,9 @@
 import React from 'react';
 import Link from 'next/link';
 import { Slug } from '@sanity/types';
+import { urlResolver } from '@lib/sanity';
 import Date from './date';
 import CoverImage from './cover-image';
-import { urlResolver } from '../lib/sanity';
 
 type Props = {
   title: string;

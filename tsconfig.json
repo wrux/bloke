@@ -1,5 +1,12 @@
 {
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components/*": ["components/*"],
+      "@lib/*": ["lib/*"],
+      "@images/*": ["resources/images/*"],
+      "@styles/*": ["resources/styles/*"]
+    },
     "target": "esnext",
     "lib": ["es6", "dom", "dom.iterable", "esnext"],
     "allowJs": true,
