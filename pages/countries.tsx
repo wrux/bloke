@@ -1,12 +1,12 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import Container from '../components/container';
-import Header from '../components/header';
-import Layout from '../components/layout';
-import { getAllCountries } from '../lib/api';
-import PostTitle from '../components/post-title';
-import { urlResolver } from '../lib/sanity';
+import { getAllCountries } from '@lib/api';
+import { urlResolver } from '@lib/sanity';
+import Container from '@components/container';
+import Header from '@components/header';
+import Layout from '@components/layout';
+import PostTitle from '@components/post-title';
 
 type Props = {
   allCountries: any[];

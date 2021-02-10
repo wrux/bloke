@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
 import { useNextSanityImage } from 'next-sanity-image';
-import { client, ImageObject } from '../../lib/sanity';
+import { client, ImageObject } from '@lib/sanity';
 
 type Props = {
   node: {

@@ -2,15 +2,15 @@ import React from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
-import Container from '../../components/container';
-import PostBody from '../../components/post-body';
-import Stories from '../../components/stories';
-import Header from '../../components/header';
-import PostHeader from '../../components/post-header';
-import SectionSeparator from '../../components/section-separator';
-import Layout from '../../components/layout';
-import PostTitle from '../../components/post-title';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '../../lib/api';
+import Container from '@components/container';
+import PostBody from '@components/post-body';
+import Stories from '@components/stories';
+import Header from '@components/header';
+import PostHeader from '@components/post-header';
+import SectionSeparator from '@components/section-separator';
+import Layout from '@components/layout';
+import PostTitle from '@components/post-title';
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api';
 
 export default function Post({ post, morePosts }): JSX.Element {
   const router = useRouter();

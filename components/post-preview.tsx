@@ -1,10 +1,10 @@
 import React from 'react';
 import Link from 'next/link';
 import { Slug } from '@sanity/types';
+import { ImageObject, urlResolver } from '@lib/sanity';
 import CountryList from './country-list';
 import CoverImage from './cover-image';
 import Date from './date';
-import { ImageObject, urlResolver } from '../lib/sanity';
 
 type Props = {
   title: string;

@@ -12,7 +12,7 @@ module.exports = {
       jsx: true,
     },
   },
-  plugins: ['@typescript-eslint', 'react', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'prettier', 'import'],
   extends: [
     'airbnb',
     'airbnb/hooks',
@@ -28,6 +28,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],
     'import/extensions': 'off',
+    'import/no-unresolved': 'error',
     'react/prop-types': 'off',
     'jsx-a11y/anchor-is-valid': 'off',
     'react/jsx-props-no-spreading': ['error', { custom: 'ignore' }],
@@ -44,6 +45,9 @@ module.exports = {
     ],
   },
   settings: {
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
     'import/resolver': {
       'babel-module': {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
@@ -51,6 +55,10 @@ module.exports = {
       node: {
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
         // paths: ['src'],
+      },
+      typescript: {
+        // Always try to resolve types under `<root>@types` directory even it doesn't contain any source code, like `@types/unist`.
+        alwaysTryTypes: true,
       },
     },
   },
