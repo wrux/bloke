@@ -15,13 +15,13 @@ const serializers = {
         return null;
       }
       return (
-        <div className="my-8 -mx-5 sm:-mx-12 md:my-10 md:-mx-16 lg:my-16 lg:-mx-32 xl:-mx-48">
+        <div className="-mx-5 my-8 sm:-mx-12 md:-mx-16 md:my-10 lg:-mx-32 lg:my-16 xl:-mx-48">
           <Image {...props} />
         </div>
       );
     },
     imageGrid: (props) => (
-      <div className="my-8 -mx-5 sm:-mx-12 md:my-10 md:-mx-16 lg:my-16 lg:-mx-32 xl:-mx-48">
+      <div className="-mx-5 my-8 sm:-mx-12 md:-mx-16 md:my-10 lg:-mx-32 lg:my-16 xl:-mx-48">
         <ImageGrid {...props} />
       </div>
     ),
@@ -29,7 +29,7 @@ const serializers = {
 };
 
 const PostBody: React.FC<Props> = ({ content }) => (
-  <div className="max-w-2xl mx-auto prose lg:prose-xl">
+  <div className="prose lg:prose-xl mx-auto max-w-2xl">
     <BlockContent
       blocks={content}
       projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID}
