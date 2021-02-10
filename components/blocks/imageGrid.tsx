@@ -47,7 +47,7 @@ const ImageGridBlock: React.FC<Props> = ({ node }) => {
           {
             'grid-cols-2': images.length % 2 === 0,
             'sm:grid-cols-3': images.length === 3,
-          }
+          },
         )}
       >
         {images.map((image: ImageObject) => (

@@ -1,6 +1,7 @@
 # Bloke Blog
 
 Bloke blog website built with Sanity CMS and NextJS.
+
 ### Running the front-end
 
 Rename the `.env.test` file to `.env` and store the environment variables that Next and Sanity will use to pull data from the Sanity API. You can get or create the tokens, ids, and secrets from [manage.sanity.io](https://manage.sanity.io).

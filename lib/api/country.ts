@@ -23,14 +23,14 @@ export async function getPreviewCountryBySlug(slug) {
       ${countryFields}
       body
     }`,
-    { slug }
+    { slug },
   );
   return data[0];
 }
 
 export async function getAllCountriesWithSlug() {
   const data = await client.fetch(
-    '*[_type == "post"]{ \'slug\': slug.current }'
+    '*[_type == "post"]{ \'slug\': slug.current }',
   );
   return data;
 }
@@ -43,7 +43,7 @@ export async function getCountryAndPosts(slug, preview) {
         `*[_type == "country" && slug.current == $slug] | order(title asc) {
         ${countryFields}
       }`,
-        { slug }
+        { slug },
       )
       .then((res) => res?.[0]),
     await getClient(preview)
@@ -60,7 +60,7 @@ export async function getCountryAndPosts(slug, preview) {
             'coverImage': mainImage,
           }
         }`,
-        { slug }
+        { slug },
       )
       .then((res) => res?.[0]?.posts),
   ]);

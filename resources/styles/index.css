@@ -4,11 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer utilities {
   .link {
-    @apply
-      font-bold
+    @apply font-bold
       hover:text-success
       hover:underline;
   }
