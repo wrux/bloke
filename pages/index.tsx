@@ -1,7 +1,7 @@
 import React from 'react';
 import Head from 'next/head';
 import { GetStaticProps } from 'next';
-import { getAllPostsForHome } from '@lib/api';
+import { getAllPostsForHome } from '@lib/api/post';
 import Container from '@components/container';
 import Stories from '@components/stories';
 import HeroPost from '@components/hero-post';

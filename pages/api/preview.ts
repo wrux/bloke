@@ -1,4 +1,5 @@
-import { getPreviewPostBySlug } from '@lib/api';
+import { getPreviewPostBySlug } from '@lib/api/post';
+import { urlResolver } from '@lib/sanity';
 
 export default async function preview(req, res) {
   // Check the secret and next parameters
@@ -23,6 +24,7 @@ export default async function preview(req, res) {
 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
-  res.writeHead(307, { Location: `/posts/${post.slug}` });
+  res.writeHead(307, { Location: urlResolver('post', post.slug) });
+
   res.end();
 }

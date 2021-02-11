@@ -10,7 +10,7 @@ import PostHeader from '@components/post-header';
 import SectionSeparator from '@components/section-separator';
 import Layout from '@components/layout';
 import PostTitle from '@components/post-title';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api';
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api/post';
 
 export default function Post({ post, morePosts }): JSX.Element {
   const router = useRouter();

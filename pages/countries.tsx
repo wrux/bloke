@@ -1,7 +1,7 @@
 import React from 'react';
 import { GetStaticProps } from 'next';
 import Link from 'next/link';
-import { getAllCountries } from '@lib/api';
+import { getAllCountries } from '@lib/api/country';
 import { urlResolver } from '@lib/sanity';
 import Container from '@components/container';
 import Header from '@components/header';

@@ -1,4 +1,4 @@
-import client, { getClient, getUniquePosts, previewClient } from '../sanity';
+import { getClient, getUniquePosts } from '@lib/sanity';
 
 const countryFields = `
   _id,
@@ -10,32 +10,25 @@ const countryFields = `
   description,
 `;
 
-// List posts in the country:
-//
-// *[_type=="country"]{
-// 	title,
-//   "relatedPosts": *[_type=='post' && references(^._id)]{ title }
-// }
-
-export async function getPreviewCountryBySlug(slug) {
+export const getPreviewCountryBySlug = async (slug: string) => {
   const data = await getClient(true).fetch(
     `*[_type == "country" && slug.current == $slug] | order(publishedAt desc) {
       ${countryFields}
       body
     }`,
-    { slug },
+    { slug }
   );
   return data[0];
-}
+};
 
-export async function getAllCountriesWithSlug() {
-  const data = await client.fetch(
-    '*[_type == "post"]{ \'slug\': slug.current }',
+export const getAllCountriesWithSlug = async () => {
+  const data = await getClient().fetch(
+    '*[_type == "post"]{ \'slug\': slug.current }'
   );
   return data;
-}
+};
 
-export async function getCountryAndPosts(slug, preview) {
+export const getCountryAndPosts = async (slug: string, preview: boolean) => {
   const curClient = getClient(preview);
   const [country, posts] = await Promise.all([
     await getClient(preview)
@@ -43,7 +36,7 @@ export async function getCountryAndPosts(slug, preview) {
         `*[_type == "country" && slug.current == $slug] | order(title asc) {
         ${countryFields}
       }`,
-        { slug },
+        { slug }
       )
       .then((res) => res?.[0]),
     await getClient(preview)
@@ -60,17 +53,17 @@ export async function getCountryAndPosts(slug, preview) {
             'coverImage': mainImage,
           }
         }`,
-        { slug },
+        { slug }
       )
       .then((res) => res?.[0]?.posts),
   ]);
   return { country, posts: posts ? getUniquePosts(posts) : [] };
-}
+};
 
-export async function getAllCountries(preview) {
+export const getAllCountries = async (preview: boolean) => {
   const results = await getClient(preview)
     .fetch(`*[_type == "country"] | order(title asc) {
       ${countryFields}
     }`);
   return results ? getUniquePosts(results) : [];
-}
+};
