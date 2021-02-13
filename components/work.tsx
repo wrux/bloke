@@ -16,7 +16,7 @@ const Work: React.FC = () => (
           .
         </p>
       </div>
-      <img src="/working.svg" alt="Working on the laptop" />
+      <img src="/working.svg" alt="Working on the laptop" loading="lazy" />
     </Container>
   </section>
 );

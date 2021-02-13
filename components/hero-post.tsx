@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Slug } from '@sanity/types';
 import { urlResolver } from '@lib/sanity';
+import { motion } from 'framer-motion';
 import Date from './date';
 import CoverImage from './cover-image';
 
@@ -21,9 +22,9 @@ const HeroPost: React.FC<Props> = ({
   slug,
 }) => (
   <section>
-    <div className="mb-8 md:mb-16">
+    <motion.div className="mb-8 md:mb-16" layoutId="cover">
       <CoverImage slug={slug} imageObject={coverImage} title={title} />
-    </div>
+    </motion.div>
     <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
       <div>
         <h3 className="mb-4 text-4xl lg:text-6xl leading-tight">

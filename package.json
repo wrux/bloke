@@ -23,6 +23,7 @@
     "classnames": "2.2.6",
     "country-code-emoji": "^2.2.0",
     "date-fns": "2.15.0",
+    "framer-motion": "^3.3.0",
     "next": "latest",
     "next-sanity": "^0.1.5",
     "next-sanity-image": "^1.0.1",
