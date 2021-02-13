@@ -1,10 +1,9 @@
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import {
   SanityAsset,
-  SanityImageSource,
   SanityImageObject,
+  SanityImageSource,
   SanityReference,
-  ImageUrlBuilderOptionsWithAsset,
 } from '@sanity/image-url/lib/types/types';
 import { Slug } from '@sanity/types';
 import {
