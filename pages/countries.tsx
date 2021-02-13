@@ -1,18 +1,33 @@
-import React from 'react';
-import { GetStaticProps } from 'next';
-import Link from 'next/link';
-import { getAllCountries } from '@lib/api/country';
-import { urlResolver } from '@lib/sanity';
 import Container from '@components/container';
 import Header from '@components/header';
 import Layout from '@components/layout';
 import PostTitle from '@components/post-title';
+import { getAllCountries } from '@lib/api/country';
+import { urlResolver } from '@lib/sanity';
+import { Country } from '@studio/schema';
+import { GetStaticPropsContext, GetStaticPropsResult } from 'next';
+import Link from 'next/link';
+import React from 'react';
 
-type Props = {
-  allCountries: any[];
+interface Props {
+  preview: boolean;
+  allCountries: Pick<Country, '_id' | 'slug' | 'name'>[];
+}
+
+export const getStaticProps = async ({
+  preview = false,
+}: GetStaticPropsContext): Promise<GetStaticPropsResult<Props>> => {
+  const allCountries = await getAllCountries(preview);
+  return {
+    props: {
+      preview,
+      allCountries,
+    },
+    revalidate: 1,
+  };
 };
 
-const Countries: React.FC<Props> = ({ allCountries }) => (
+const Page: React.FC<Props> = ({ allCountries }) => (
   <Layout>
     <Container>
       <Header />
@@ -37,15 +52,4 @@ const Countries: React.FC<Props> = ({ allCountries }) => (
   </Layout>
 );
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allCountries = await getAllCountries(preview);
-  return {
-    props: {
-      preview,
-      allCountries,
-    },
-    revalidate: 1,
-  };
-};
-
-export default Countries;
+export default Page;

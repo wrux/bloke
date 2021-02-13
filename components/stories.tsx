@@ -1,8 +1,9 @@
+import { Post } from '@studio/schema';
 import React from 'react';
 import PostPreview from './post-preview';
 
 type Props = {
-  posts: any[];
+  posts: Post[];
   title?: string;
 };
 
@@ -16,11 +17,12 @@ const Stories: React.FC<Props> = ({ posts, title }) => (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-y-8 md:gap-24 mb-32">
       {posts.map((post) => (
         <PostPreview
-          key={post.slug}
+          // eslint-disable-next-line no-underscore-dangle
+          key={post._id}
           title={post.title}
-          coverImage={post.coverImage}
+          coverImage={post.mainImage}
           countries={post.countries}
-          date={post.date}
+          date={post.publishedAt}
           slug={post.slug}
           excerpt={post.excerpt}
         />

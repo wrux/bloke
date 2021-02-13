@@ -1,13 +1,14 @@
+import { SanityAsset } from '@studio/schema';
 import React from 'react';
+import CountryList, { CountryLinkProps } from './country-list';
 import CoverImage from './cover-image';
-import CountryList from './country-list';
 import Date from './date';
 import PostTitle from './post-title';
 
 type Props = {
   title: string;
-  coverImage?: any;
-  countries?: any[];
+  coverImage?: SanityAsset;
+  countries?: CountryLinkProps[];
   date: string;
 };
 

@@ -1,14 +1,14 @@
-import React from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
-import { useNextSanityImage } from 'next-sanity-image';
-import { Slug } from '@sanity/types';
 import {
   client,
   custom16by9ImageBuilder,
   ImageObject,
   urlResolver,
 } from '@lib/sanity';
+import { Slug } from '@sanity/types';
+import { useNextSanityImage } from 'next-sanity-image';
+import Image from 'next/image';
+import Link from 'next/link';
+import React from 'react';
 
 type Props = {
   title: string;

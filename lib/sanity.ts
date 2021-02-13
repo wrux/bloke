@@ -113,7 +113,7 @@ export const previewClient: PicoSanity = createClient({
   token: process.env.SANITY_API_TOKEN,
 });
 
-export const getClient = (usePreview: boolean): PicoSanity =>
+export const getClient = (usePreview = false): PicoSanity =>
   usePreview ? previewClient : client;
 
 export const getUniquePosts = (posts) => {

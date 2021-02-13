@@ -1,5 +1,5 @@
+import { format, isValid, parseISO } from 'date-fns';
 import React from 'react';
-import { isValid, parseISO, format } from 'date-fns';
 
 type Props = {
   dateString: string;

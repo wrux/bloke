@@ -1,10 +1,10 @@
 /* eslint-disable react/display-name */
-import React from 'react';
 import BlockContent from '@sanity/block-content-to-react';
+import React from 'react';
 import { Image, ImageGrid } from './blocks';
 
 type Props = {
-  content: any[];
+  content: BlockContent;
 };
 
 const serializers = {

@@ -1,18 +1,60 @@
-import React from 'react';
+import Container from '@components/container';
+import Header from '@components/header';
+import Layout from '@components/layout';
+import PostBody from '@components/post-body';
+import PostHeader from '@components/post-header';
+import PostTitle from '@components/post-title';
+import SectionSeparator from '@components/section-separator';
+import Stories from '@components/stories';
+import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api/post';
+import { Post } from '@studio/schema';
+import {
+  GetStaticPathsResult,
+  GetStaticPropsContext,
+  GetStaticPropsResult,
+} from 'next';
+import ErrorPage from 'next/error';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import ErrorPage from 'next/error';
-import Container from '@components/container';
-import PostBody from '@components/post-body';
-import Stories from '@components/stories';
-import Header from '@components/header';
-import PostHeader from '@components/post-header';
-import SectionSeparator from '@components/section-separator';
-import Layout from '@components/layout';
-import PostTitle from '@components/post-title';
-import { getAllPostsWithSlug, getPostAndMorePosts } from '@lib/api/post';
+import React from 'react';
 
-export default function Post({ post, morePosts }): JSX.Element {
+interface Params {
+  slug: string;
+}
+
+interface Props {
+  preview: boolean;
+  post: Post;
+  morePosts: Post[];
+}
+
+export const getStaticProps = async ({
+  params,
+  preview = false,
+}: GetStaticPropsContext<Params>): Promise<GetStaticPropsResult<Props>> => {
+  const data = await getPostAndMorePosts(params.slug, preview);
+  return {
+    props: {
+      preview,
+      post: data?.post || null,
+      morePosts: data?.morePosts || null,
+    },
+    revalidate: 1,
+  };
+};
+
+export const getStaticPaths = async (): Promise<GetStaticPathsResult> => {
+  const allPosts = await getAllPostsWithSlug();
+  return {
+    paths:
+      allPosts?.map((post) => ({
+        params: { slug: post.slug.current },
+      })) || [],
+    fallback: true,
+  };
+};
+
+const Page: React.FC<Props> = ({ post, morePosts }): JSX.Element => {
   const router = useRouter();
   if (!router.isFallback && !post?.slug) {
     return <ErrorPage statusCode={404} />;
@@ -32,13 +74,12 @@ export default function Post({ post, morePosts }): JSX.Element {
               </Head>
               <PostHeader
                 title={post.title}
-                coverImage={post.coverImage}
-                date={post.date}
+                coverImage={post.mainImage}
+                date={post.publishedAt}
                 countries={post.countries}
               />
               <PostBody content={post.body} />
             </article>
-
             <SectionSeparator />
             {morePosts.length > 0 && (
               <Stories posts={morePosts} title="More Stories" />
@@ -48,29 +89,6 @@ export default function Post({ post, morePosts }): JSX.Element {
       </Container>
     </Layout>
   );
-}
+};
 
-export async function getStaticProps({ params, preview = false }) {
-  const data = await getPostAndMorePosts(params.slug, preview);
-  return {
-    props: {
-      preview,
-      post: data?.post || null,
-      morePosts: data?.morePosts || null,
-    },
-    revalidate: 1,
-  };
-}
-
-export async function getStaticPaths() {
-  const allPosts = await getAllPostsWithSlug();
-  return {
-    paths:
-      allPosts?.map((post) => ({
-        params: {
-          slug: post.slug,
-        },
-      })) || [],
-    fallback: true,
-  };
-}
+export default Page;

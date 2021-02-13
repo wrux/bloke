@@ -1,14 +1,10 @@
-import React from 'react';
-import Link from 'next/link';
-import { Slug } from '@sanity/types';
-import countryCodeEmoji from 'country-code-emoji';
 import { urlResolver } from '@lib/sanity';
+import { Country } from '@studio/schema';
+import countryCodeEmoji from 'country-code-emoji';
+import Link from 'next/link';
+import React from 'react';
 
-export type CountryLinkProps = {
-  name: string;
-  slug: Slug;
-  countryCode?: string;
-};
+export type CountryLinkProps = Pick<Country, 'name' | 'slug' | 'countryCode'>;
 
 export type CountryListProps = {
   countries: CountryLinkProps[];
