@@ -18,9 +18,9 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import React from 'react';
 
-interface Params {
+type Params = {
   slug: string;
-}
+};
 
 interface Props {
   preview: boolean;
