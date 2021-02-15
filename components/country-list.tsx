@@ -1,17 +1,13 @@
-import React from 'react';
-import Link from 'next/link';
-import { Slug } from '@sanity/types';
-import countryCodeEmoji from 'country-code-emoji';
 import { urlResolver } from '@lib/sanity';
+import { Country, SanityKeyedReference } from '@studio/schema';
+import countryCodeEmoji from 'country-code-emoji';
+import Link from 'next/link';
+import React from 'react';
 
-export type CountryLinkProps = {
-  name: string;
-  slug: Slug;
-  countryCode?: string;
-};
+export type CountryLinkProps = Pick<Country, 'name' | 'slug' | 'countryCode'>;
 
 export type CountryListProps = {
-  countries: CountryLinkProps[];
+  countries: Array<SanityKeyedReference<Country>>;
 };
 
 export const CountryLink: React.FC<CountryLinkProps> = ({
@@ -35,7 +31,8 @@ const CountryList: React.FC<CountryListProps> = ({ countries }) => (
   <div className="flex items-center gap-2 mb-8">
     <span className="sr-only">Countries:</span>
     {countries.map((props) => (
-      <CountryLink key={props.name} {...props} />
+      // eslint-disable-next-line no-underscore-dangle
+      <CountryLink key={props._key} {...props} />
     ))}
   </div>
 );

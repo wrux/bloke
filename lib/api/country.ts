@@ -1,76 +1,54 @@
-import client, { getClient, getUniquePosts, previewClient } from '../sanity';
+import { postFields } from '@lib/api/post';
+import { getClient } from '@lib/sanity';
+import { Country, Post } from '@studio/schema';
 
-const countryFields = `
-  _id,
-  name,
-  title,
-  countryCode,
-  'date': publishedAt,
-  'slug': slug,
-  description,
-`;
-
-// List posts in the country:
-//
-// *[_type=="country"]{
-// 	title,
-//   "relatedPosts": *[_type=='post' && references(^._id)]{ title }
-// }
-
-export async function getPreviewCountryBySlug(slug) {
-  const data = await getClient(true).fetch(
-    `*[_type == "country" && slug.current == $slug] | order(publishedAt desc) {
-      ${countryFields}
-      body
-    }`,
-    { slug },
+export const getPreviewCountryBySlug = async (slug: string) => {
+  const data = await getClient(
+    true
+  ).fetch(
+    '*[_type == "country" && slug.current == $slug] | order(publishedAt desc)',
+    { slug }
   );
   return data[0];
+};
+
+export const getAllCountriesWithSlug = async (): Promise<
+  Pick<Country, 'slug'>[]
+> => getClient().fetch<Pick<Country, 'slug'>[]>('*[_type == "post"]{ slug }');
+
+/*
+ * TODO: replace this with an inline type in replacement of
+ *       `.fetch<CountryWithPosts[]>(` as I couldn't find a simple solution.
+ */
+interface CountryWithPosts extends Country {
+  posts?: Post[];
 }
 
-export async function getAllCountriesWithSlug() {
-  const data = await client.fetch(
-    '*[_type == "post"]{ \'slug\': slug.current }',
+export const getCountryAndPosts = async (
+  slug: string,
+  preview = false
+): Promise<CountryWithPosts> =>
+  getClient(preview)
+    .fetch<CountryWithPosts[]>(
+      `*[_type == 'country' && slug.current == $slug] | order(title asc) {
+      _id,
+      name,
+      countryCode,
+      publishedAt,
+      slug,
+      'posts': *[_type=='post' && references(^._id)] { ${postFields} }
+    }`,
+      { slug }
+    )
+    .then((res) => res?.[0]);
+
+export const getAllCountries = async (
+  preview = false
+): Promise<Pick<Country, '_id' | 'slug' | 'name'>[]> =>
+  getClient(preview).fetch(
+    `*[_type == "country"] | order(title asc) {
+      _id,
+      slug,
+      name,
+    }`
   );
-  return data;
-}
-
-export async function getCountryAndPosts(slug, preview) {
-  const curClient = getClient(preview);
-  const [country, posts] = await Promise.all([
-    await getClient(preview)
-      .fetch(
-        `*[_type == "country" && slug.current == $slug] | order(title asc) {
-        ${countryFields}
-      }`,
-        { slug },
-      )
-      .then((res) => res?.[0]),
-    await getClient(preview)
-      .fetch(
-        `*[_type=="country" && slug.current == $slug] {
-          "posts": *[_type=='post' && references(^._id)] {
-            _id,
-            name,
-            title,
-            'date': publishedAt,
-            excerpt,
-            'countries': countries[]->{countryCode, name, slug},
-            'slug': slug,
-            'coverImage': mainImage,
-          }
-        }`,
-        { slug },
-      )
-      .then((res) => res?.[0]?.posts),
-  ]);
-  return { country, posts: posts ? getUniquePosts(posts) : [] };
-}
-
-export async function getAllCountries(preview) {
-  const results = await getClient(preview)
-    .fetch(`*[_type == "country"] | order(title asc) {
-      ${countryFields}
-    }`);
-  return results ? getUniquePosts(results) : [];
-}

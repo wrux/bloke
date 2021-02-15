@@ -5,7 +5,8 @@
       "@components/*": ["components/*"],
       "@lib/*": ["lib/*"],
       "@images/*": ["resources/images/*"],
-      "@styles/*": ["resources/styles/*"]
+      "@styles/*": ["resources/styles/*"],
+      "@studio/*": ["studio/*"]
     },
     "target": "esnext",
     "lib": ["es6", "dom", "dom.iterable", "esnext"],

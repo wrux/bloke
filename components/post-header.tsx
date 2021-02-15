@@ -1,13 +1,15 @@
+import { ImageObject } from '@lib/sanity';
+import { Country, SanityKeyedReference } from '@studio/schema';
 import React from 'react';
-import CoverImage from './cover-image';
 import CountryList from './country-list';
+import CoverImage from './cover-image';
 import Date from './date';
 import PostTitle from './post-title';
 
 type Props = {
   title: string;
-  coverImage?: any;
-  countries?: any[];
+  coverImage?: ImageObject;
+  countries?: Array<SanityKeyedReference<Country>>;
   date: string;
 };
 

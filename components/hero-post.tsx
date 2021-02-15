@@ -1,13 +1,13 @@
-import React from 'react';
-import Link from 'next/link';
+import { ImageObject, urlResolver } from '@lib/sanity';
 import { Slug } from '@sanity/types';
-import { urlResolver } from '@lib/sanity';
-import Date from './date';
+import Link from 'next/link';
+import React from 'react';
 import CoverImage from './cover-image';
+import Date from './date';
 
 type Props = {
   title: string;
-  coverImage?: any;
+  coverImage?: ImageObject;
   date: string;
   excerpt?: string;
   slug: Slug;
@@ -22,7 +22,9 @@ const HeroPost: React.FC<Props> = ({
 }) => (
   <section>
     <div className="mb-8 md:mb-16">
-      <CoverImage slug={slug} imageObject={coverImage} title={title} />
+      {coverImage && (
+        <CoverImage slug={slug} imageObject={coverImage} title={title} />
+      )}
     </div>
     <div className="md:grid md:grid-cols-2 md:col-gap-16 lg:col-gap-8 mb-20 md:mb-28">
       <div>
@@ -35,9 +37,11 @@ const HeroPost: React.FC<Props> = ({
           <Date dateString={date} />
         </div>
       </div>
-      <div>
-        <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
-      </div>
+      {excerpt && (
+        <div>
+          <p className="text-lg leading-relaxed mb-4">{excerpt}</p>
+        </div>
+      )}
     </div>
   </section>
 );

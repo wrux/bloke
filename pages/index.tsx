@@ -1,18 +1,29 @@
-import React from 'react';
-import Head from 'next/head';
-import { GetStaticProps } from 'next';
-import { getAllPostsForHome } from '@lib/api';
 import Container from '@components/container';
-import Stories from '@components/stories';
 import HeroPost from '@components/hero-post';
 import Intro from '@components/intro';
 import Layout from '@components/layout';
+import Stories from '@components/stories';
+import { getAllPostsForHome } from '@lib/api/post';
+import { Post } from '@studio/schema';
+import { GetStaticProps, GetStaticPropsResult } from 'next';
+import Head from 'next/head';
+import React from 'react';
 
 type Props = {
-  allPosts: any[];
+  allPosts: Post[];
 };
 
-const Index: React.FC<Props> = ({ allPosts }): JSX.Element => {
+export const getStaticProps: GetStaticProps = async ({
+  preview = false,
+}): Promise<GetStaticPropsResult<Props>> => {
+  const allPosts = await getAllPostsForHome(preview);
+  return {
+    props: { allPosts },
+    revalidate: 1,
+  };
+};
+
+const Page: React.FC<Props> = ({ allPosts }): JSX.Element => {
   const heroPost = allPosts[0];
   const morePosts = allPosts.slice(1);
 
@@ -27,8 +38,8 @@ const Index: React.FC<Props> = ({ allPosts }): JSX.Element => {
           {heroPost && (
             <HeroPost
               title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
+              coverImage={heroPost.mainImage}
+              date={heroPost.publishedAt}
               slug={heroPost.slug}
               excerpt={heroPost.excerpt}
             />
@@ -42,12 +53,4 @@ const Index: React.FC<Props> = ({ allPosts }): JSX.Element => {
   );
 };
 
-export const getStaticProps: GetStaticProps = async ({ preview = false }) => {
-  const allPosts = await getAllPostsForHome(preview);
-  return {
-    props: { allPosts },
-    revalidate: 1,
-  };
-};
-
-export default Index;
+export default Page;

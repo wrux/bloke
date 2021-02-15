@@ -1,10 +1,9 @@
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import {
   SanityAsset,
-  SanityImageSource,
   SanityImageObject,
+  SanityImageSource,
   SanityReference,
-  ImageUrlBuilderOptionsWithAsset,
 } from '@sanity/image-url/lib/types/types';
 import { Slug } from '@sanity/types';
 import {
@@ -113,7 +112,7 @@ export const previewClient: PicoSanity = createClient({
   token: process.env.SANITY_API_TOKEN,
 });
 
-export const getClient = (usePreview: boolean): PicoSanity =>
+export const getClient = (usePreview = false): PicoSanity =>
   usePreview ? previewClient : client;
 
 export const getUniquePosts = (posts) => {
