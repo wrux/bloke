@@ -7,7 +7,7 @@
 @layer utilities {
   .link {
     @apply font-bold
-      hover:text-brand-light
+      hover:text-brand
       hover:underline;
   }
 }
