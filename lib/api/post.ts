@@ -34,7 +34,10 @@ export const getAllPostsForHome = async (preview = false): Promise<Post[]> => {
   return getUniquePosts(results);
 };
 
-export const getPostAndMorePosts = async (slug: string, preview: boolean) => {
+export const getPostAndMorePosts = async (
+  slug: string,
+  preview: boolean
+): Promise<{ post: Post; morePosts: Post[] }> => {
   const curClient = getClient(preview);
   const [post, morePosts] = await Promise.all([
     curClient

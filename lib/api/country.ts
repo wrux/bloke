@@ -1,5 +1,5 @@
 import { postFields } from '@lib/api/post';
-import { getClient, getUniquePosts } from '@lib/sanity';
+import { getClient } from '@lib/sanity';
 import { Country, Post } from '@studio/schema';
 
 export const getPreviewCountryBySlug = async (slug: string) => {
@@ -24,7 +24,10 @@ interface CountryWithPosts extends Country {
   posts?: Post[];
 }
 
-export const getCountryAndPosts = async (slug: string, preview = false) =>
+export const getCountryAndPosts = async (
+  slug: string,
+  preview = false
+): Promise<CountryWithPosts> =>
   getClient(preview)
     .fetch<CountryWithPosts[]>(
       `*[_type == 'country' && slug.current == $slug] | order(title asc) {
@@ -41,13 +44,11 @@ export const getCountryAndPosts = async (slug: string, preview = false) =>
 
 export const getAllCountries = async (
   preview = false
-): Promise<Pick<Country, '_id' | 'slug' | 'name'>[]> => {
-  const results = await getClient(preview).fetch(
+): Promise<Pick<Country, '_id' | 'slug' | 'name'>[]> =>
+  getClient(preview).fetch(
     `*[_type == "country"] | order(title asc) {
       _id,
       slug,
       name,
     }`
   );
-  return results;
-};
