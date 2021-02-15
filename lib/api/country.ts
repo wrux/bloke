@@ -1,16 +1,6 @@
 import { postFields } from '@lib/api/post';
 import { getClient, getUniquePosts } from '@lib/sanity';
-import { Country } from '@studio/schema';
-
-// const countryFields = `
-//   _id,
-//   name,
-//   title,
-//   countryCode,
-//   'date': publishedAt,
-//   'slug': slug,
-//   description,
-// `;
+import { Country, Post } from '@studio/schema';
 
 export const getPreviewCountryBySlug = async (slug: string) => {
   const data = await getClient(
@@ -26,28 +16,28 @@ export const getAllCountriesWithSlug = async (): Promise<
   Pick<Country, 'slug'>[]
 > => getClient().fetch<Pick<Country, 'slug'>[]>('*[_type == "post"]{ slug }');
 
-export const getCountryAndPosts = async (slug: string, preview = false) => {
-  const curClient = getClient(preview);
-  const [country, posts] = await Promise.all([
-    await getClient(preview)
-      .fetch<Country[]>(
-        '*[_type == "country" && slug.current == $slug] | order(title asc)',
-        { slug }
-      )
-      .then((res) => res?.[0]),
-    await getClient(preview)
-      .fetch(
-        `*[_type=="country" && slug.current == $slug] {
-          "posts": *[_type=='post' && references(^._id)] {
-            ${postFields}
-          }
-        }`,
-        { slug }
-      )
-      .then((res) => res?.[0]?.posts),
-  ]);
-  return { country, posts: posts ? getUniquePosts(posts) : [] };
-};
+/*
+ * TODO: replace this with an inline type in replacement of
+ *       `.fetch<CountryWithPosts[]>(` as I couldn't find a simple solution.
+ */
+interface CountryWithPosts extends Country {
+  posts?: Post[];
+}
+
+export const getCountryAndPosts = async (slug: string, preview = false) =>
+  getClient(preview)
+    .fetch<CountryWithPosts[]>(
+      `*[_type == 'country' && slug.current == $slug] | order(title asc) {
+      _id,
+      name,
+      countryCode,
+      publishedAt,
+      slug,
+      'posts': *[_type=='post' && references(^._id)] { ${postFields} }
+    }`,
+      { slug }
+    )
+    .then((res) => res?.[0]);
 
 export const getAllCountries = async (
   preview = false

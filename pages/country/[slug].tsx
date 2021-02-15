@@ -34,7 +34,7 @@ export const getStaticProps = async ({
   return {
     props: {
       preview,
-      country: data?.country || null,
+      country: data || null,
       posts: data?.posts || null,
     },
     revalidate: 1,
