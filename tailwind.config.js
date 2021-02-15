@@ -16,6 +16,7 @@ module.exports = {
       },
       colors: {
         brand: '#ef233c',
+        secondary: '#25103f',
       },
       gridTemplateRows: {
         masonry: 'masonry',
