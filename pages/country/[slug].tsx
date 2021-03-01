@@ -64,7 +64,7 @@ const Page: React.FC<Props> = ({ country, posts }): JSX.Element => {
         {router.isFallback ? (
           <h1>Loading…</h1>
         ) : (
-          <article>
+          <article id="content">
             <Head>
               <title>
                 {country.name} {countryCodeEmoji(country.countryCode)} | Bloke
@@ -72,7 +72,10 @@ const Page: React.FC<Props> = ({ country, posts }): JSX.Element => {
               </title>
             </Head>
             <PostTitle>
-              {country.name} {countryCodeEmoji(country.countryCode)}
+              {country.name}{' '}
+              <span role="presentation">
+                {countryCodeEmoji(country.countryCode)}
+              </span>
             </PostTitle>
             {posts && posts.length > 0 ? (
               <Stories posts={posts} title={`Posts from ${country.name}`} />

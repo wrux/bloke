@@ -67,10 +67,9 @@ const Page: React.FC<Props> = ({ post, morePosts }): JSX.Element => {
           <PostTitle>Loading…</PostTitle>
         ) : (
           <>
-            <article>
+            <article id="content">
               <Head>
-                <title>{post.title} | Blokg Blog</title>
-                {/* <meta property="og:image" content={post.ogImage.url} /> */}
+                <title>{post.title} | Bloke Blog</title>
               </Head>
               <PostHeader
                 title={post.title}

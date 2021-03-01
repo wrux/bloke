@@ -31,7 +31,10 @@ const Page: React.FC<Props> = ({ allCountries }) => (
   <Layout>
     <Container>
       <Header />
-      <div className="md:flex gap-10 lg:gap-24 mb-10 md:mb-16 items-baseline">
+      <div
+        id="content"
+        className="md:flex gap-10 lg:gap-24 mb-10 md:mb-16 items-baseline"
+      >
         <div>
           <PostTitle className="md:w-1/2 lg:w-5/12">Countries</PostTitle>
         </div>

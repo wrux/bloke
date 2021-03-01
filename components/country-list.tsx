@@ -18,7 +18,7 @@ export const CountryLink: React.FC<CountryLinkProps> = ({
   <Link href={urlResolver('country', slug)}>
     {countryCode ? (
       <a className="inline-block py-1 last:mr-0 mr-1 text-4xl">
-        {countryCodeEmoji(countryCode)}
+        <span role="presentation">{countryCodeEmoji(countryCode)}</span>
         <span className="sr-only">{name}</span>
       </a>
     ) : (
