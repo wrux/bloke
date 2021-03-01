@@ -60,10 +60,10 @@ export default {
       type: 'blockContent',
     },
   ],
-
   preview: {
     select: {
       title: 'title',
+      subtitle: 'slug.current',
       media: 'mainImage',
     },
   },

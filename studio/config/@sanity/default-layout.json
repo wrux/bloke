@@ -1,6 +1,6 @@
 {
   "toolSwitcher": {
-    "order": [],
+    "order": ["dashboard"],
     "hidden": []
   }
 }
