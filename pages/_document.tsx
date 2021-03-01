@@ -14,6 +14,14 @@ class MyDocument extends Document {
           />
         </Head>
         <body>
+          <div className="fixed top-4 left-4">
+            <a
+              href="#content"
+              className="sr-only focus:not-sr-only focus:outline-black bg-gray-100 text-black ring-4 ring-brand ring-offset-4"
+            >
+              Skip to content
+            </a>
+          </div>
           <Main />
           <NextScript />
         </body>

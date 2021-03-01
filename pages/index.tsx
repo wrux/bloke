@@ -35,18 +35,20 @@ const Page: React.FC<Props> = ({ allPosts }): JSX.Element => {
         </Head>
         <Container>
           <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.mainImage}
-              date={heroPost.publishedAt}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && (
-            <Stories posts={morePosts} title="More Stories" />
-          )}
+          <div id="content">
+            {heroPost && (
+              <HeroPost
+                title={heroPost.title}
+                coverImage={heroPost.mainImage}
+                date={heroPost.publishedAt}
+                slug={heroPost.slug}
+                excerpt={heroPost.excerpt}
+              />
+            )}
+            {morePosts.length > 0 && (
+              <Stories posts={morePosts} title="More Stories" />
+            )}
+          </div>
         </Container>
       </Layout>
     </>

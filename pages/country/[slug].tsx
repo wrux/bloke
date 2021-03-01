@@ -64,7 +64,7 @@ const Page: React.FC<Props> = ({ country, posts }): JSX.Element => {
         {router.isFallback ? (
           <h1>Loading…</h1>
         ) : (
-          <article>
+          <article id="content">
             <Head>
               <title>
                 {country.name} {countryCodeEmoji(country.countryCode)} | Bloke

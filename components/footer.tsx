@@ -7,7 +7,11 @@ const Footer: React.FC = () => (
     <Work />
     <Container>
       <div className="py-28 flex flex-col md:flex-row items-center md:justify-around gap-8">
-        <p className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-center md:text-left mb-10 md:mb-0 md:pr-4">
+        <p
+          className="text-4xl md:text-5xl font-bold tracking-tight leading-tight text-center md:text-left mb-10 md:mb-0 md:pr-4"
+          role="heading"
+          aria-level={4}
+        >
           Like this website?
         </p>
         <a
