@@ -72,7 +72,10 @@ const Page: React.FC<Props> = ({ country, posts }): JSX.Element => {
               </title>
             </Head>
             <PostTitle>
-              {country.name} {countryCodeEmoji(country.countryCode)}
+              {country.name}{' '}
+              <span role="presentation">
+                {countryCodeEmoji(country.countryCode)}
+              </span>
             </PostTitle>
             {posts && posts.length > 0 ? (
               <Stories posts={posts} title={`Posts from ${country.name}`} />
