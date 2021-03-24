@@ -42,7 +42,7 @@ const Teaser: React.FC<Props> = ({
           slug={slug}
           title={title}
           imageObject={mainImage}
-          priority={first}
+          priority={priority}
           sizes="(max-width: 639px) 100vw, (max-width: 767px) 600px, (max-width: 1023px) 332px, (max-width: 1279px) 420px, 556px"
         />
       </div>
