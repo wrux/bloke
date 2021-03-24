@@ -2,11 +2,10 @@ import Intro from '@components/intro';
 import Layout from '@components/layout';
 import Teaser from '@components/teaser';
 import { getAllPostsForHome } from '@lib/api/post';
-import useVisibilitySensor from '@rooks/use-visibility-sensor';
 import { Post } from '@studio/schema';
 import { GetStaticProps, GetStaticPropsResult } from 'next';
 import Head from 'next/head';
-import React, { useRef } from 'react';
+import React from 'react';
 
 type Props = {
   allPosts: Post[];
@@ -22,21 +21,6 @@ export const getStaticProps: GetStaticProps = async ({
   };
 };
 
-const VisibilityTeaser: React.FC<{ post: Post }> = ({ post }): JSX.Element => {
-  const rootNode = useRef(null);
-  const { isVisible } = useVisibilitySensor(rootNode, {
-    intervalCheck: false,
-    scrollCheck: true,
-    resizeCheck: true,
-    partialVisibility: 'top',
-  });
-  return (
-    <div ref={rootNode}>
-      <Teaser {...post} isVisible={isVisible} />
-    </div>
-  );
-};
-
 const Page: React.FC<Props> = ({ allPosts }): JSX.Element => (
   <Layout>
     <Head>
@@ -49,9 +33,9 @@ const Page: React.FC<Props> = ({ allPosts }): JSX.Element => (
         </div>
       </div>
       <div className="grid gap-4 md:gap-8 md:py-16">
-        {allPosts.map((post) => (
+        {allPosts.map((post, index) => (
           // eslint-disable-next-line no-underscore-dangle
-          <VisibilityTeaser key={post._id} post={post} />
+          <Teaser key={post._id} priority={index === 0} {...post} />
         ))}
       </div>
     </div>
