@@ -5,6 +5,7 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1280px',
+      '2xl': '1536px',
     },
     extend: {
       boxShadow: {
@@ -21,6 +22,9 @@ module.exports = {
       colors: {
         brand: '#ef233c',
         secondary: '#25103f',
+      },
+      gridTemplateColumns: {
+        '1/3': '1fr 2fr',
       },
       gridTemplateRows: {
         masonry: 'masonry',

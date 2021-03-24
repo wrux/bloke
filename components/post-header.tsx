@@ -21,7 +21,7 @@ const PostHeader: React.FC<Props> = ({
 }) => (
   <>
     <PostTitle>{title}</PostTitle>
-    {countries && <CountryList countries={countries} />}
+    {countries && <CountryList countries={countries} large />}
     <div className="mb-8 md:mb-16">
       <CoverImage
         title={title}

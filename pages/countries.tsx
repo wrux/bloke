@@ -33,7 +33,7 @@ const Page: React.FC<Props> = ({ allCountries }) => (
       <Header />
       <div
         id="content"
-        className="md:flex gap-10 lg:gap-24 mb-10 md:mb-16 items-baseline"
+        className="md:grid grid-cols-1/3 gap-16 mb-10 md:mb-16 items-baseline"
       >
         <div>
           <PostTitle className="md:w-1/2 lg:w-5/12">Countries</PostTitle>
