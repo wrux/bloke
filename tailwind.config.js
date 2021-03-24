@@ -1,4 +1,5 @@
 module.exports = {
+  purge: false, // Configured in `postcss.config.js`.
   theme: {
     screens: {
       sm: '640px',
