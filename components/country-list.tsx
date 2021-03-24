@@ -8,12 +8,12 @@ export type CountryLinkProps = Pick<
   Country,
   'name' | 'slug' | 'countryCode'
 > & {
-  large: boolean;
+  large?: boolean;
 };
 
 export type CountryListProps = {
   countries: Array<SanityKeyedReference<Country>>;
-  large: boolean;
+  large?: boolean;
 };
 
 export const CountryLink: React.FC<CountryLinkProps> = ({
