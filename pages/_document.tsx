@@ -10,7 +10,7 @@ class MyDocument extends Document {
             async
             defer
             data-domain="bloke.blog"
-            src="https://plausible.io/js/plausible.js"
+            src="https://stats.bloke.blog/js/index.js"
           />
         </Head>
         <body>
