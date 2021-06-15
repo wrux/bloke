@@ -7,7 +7,7 @@ export const postFields = `
   title,
   publishedAt,
   excerpt,
-  'countries': countries[]->{countryCode, name, slug},
+  'countries': countries[]->{'_key': _id, countryCode, name, slug},
   slug,
   mainImage,
 `;
