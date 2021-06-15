@@ -12,15 +12,15 @@ export const postFields = `
   mainImage,
 `;
 
-export const getPreviewPostBySlug = async (slug: string) => {
-  const data = await getClient(
-    true
-  ).fetch(
-    '*[_type == "post" && slug.current == $slug] | order(publishedAt desc)',
-    { slug }
-  );
-  return data[0];
-};
+// export const getPreviewPostBySlug = async (slug: string) => {
+//   const data = await getClient(
+//     true
+//   ).fetch(
+//     '*[_type == "post" && slug.current == $slug] | order(publishedAt desc)',
+//     { slug }
+//   );
+//   return data[0];
+// };
 
 export const getAllPostsWithSlug = async (): Promise<Pick<Post, 'slug'>[]> =>
   getClient().fetch<Pick<Post, 'slug'>[]>('*[_type == "post"]{ slug }');

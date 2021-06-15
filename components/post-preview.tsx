@@ -1,7 +1,8 @@
-import React from 'react';
-import Link from 'next/link';
-import { Slug } from '@sanity/types';
 import { ImageObject, urlResolver } from '@lib/sanity';
+import { Slug } from '@sanity/types';
+import { Country, SanityKeyedReference } from '@studio/schema';
+import Link from 'next/link';
+import React from 'react';
 import CountryList from './country-list';
 import CoverImage from './cover-image';
 import Date from './date';
@@ -9,7 +10,7 @@ import Date from './date';
 type Props = {
   title: string;
   coverImage?: ImageObject;
-  countries?: any[];
+  countries?: Array<SanityKeyedReference<Country>>;
   date: string;
   excerpt?: string;
   slug: Slug;

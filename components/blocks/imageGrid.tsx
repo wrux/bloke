@@ -1,15 +1,15 @@
-import React from 'react';
-import classnames from 'classnames';
-import Image from 'next/image';
-import { useNextSanityImage } from 'next-sanity-image';
 import {
   client,
-  getSanityRefId,
+  customImageBuilder,
   getImageDimensions,
+  getSanityRefId,
   imageBuilder,
   ImageObject,
-  customImageBuilder,
 } from '@lib/sanity';
+import classnames from 'classnames';
+import { useNextSanityImage } from 'next-sanity-image';
+import Image from 'next/image';
+import React from 'react';
 import styles from './imageGrid.module.css';
 
 type Props = {

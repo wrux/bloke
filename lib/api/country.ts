@@ -2,15 +2,13 @@ import { postFields } from '@lib/api/post';
 import { getClient } from '@lib/sanity';
 import { Country, Post } from '@studio/schema';
 
-export const getPreviewCountryBySlug = async (slug: string) => {
-  const data = await getClient(
-    true
-  ).fetch(
-    '*[_type == "country" && slug.current == $slug] | order(publishedAt desc)',
-    { slug }
-  );
-  return data[0];
-};
+// export const getPreviewCountryBySlug = async (slug: string): Promise<Pick<Country, 'slug'>[]> => {
+//   const data = await getClient(true).fetch(
+//     '*[_type == "country" && slug.current == $slug] | order(publishedAt desc)',
+//     { slug }
+//   );
+//   return data[0];
+// };
 
 export const getAllCountriesWithSlug = async (): Promise<
   Pick<Country, 'slug'>[]
