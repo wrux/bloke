@@ -43,7 +43,7 @@ const CountryList: React.FC<CountryListProps> = ({ countries, large }) => (
     <span className="sr-only">Countries:</span>
     {countries.map((props) => (
       // eslint-disable-next-line no-underscore-dangle
-      <CountryLink key={props._key} {...props} large={large} />
+      <CountryLink key={props._key} large={large} {...props} />
     ))}
   </div>
 );

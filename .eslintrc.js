@@ -13,6 +13,7 @@ module.exports = {
     },
   },
   plugins: ['@typescript-eslint', 'react', 'prettier', 'import'],
+  ignorePatterns: ['node_modules', 'studio'],
   extends: [
     'airbnb',
     'airbnb/hooks',
@@ -22,8 +23,6 @@ module.exports = {
     'plugin:import/warnings',
     'plugin:import/typescript',
     'prettier',
-    'prettier/@typescript-eslint',
-    'prettier/react',
   ],
   rules: {
     'react/jsx-filename-extension': [1, { extensions: ['.ts', '.tsx'] }],

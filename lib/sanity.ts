@@ -1,3 +1,4 @@
+import { SanityClient } from '@sanity/client';
 import { ImageUrlBuilder } from '@sanity/image-url/lib/types/builder';
 import {
   SanityAsset,
@@ -6,13 +7,9 @@ import {
   SanityReference,
 } from '@sanity/image-url/lib/types/types';
 import { Slug } from '@sanity/types';
-import {
-  createClient,
-  createImageUrlBuilder,
-  createPreviewSubscriptionHook,
-} from 'next-sanity';
+import { Post } from '@studio/schema';
+import { createClient, createImageUrlBuilder } from 'next-sanity';
 import { UseNextSanityImageBuilderOptions } from 'next-sanity-image';
-import { PicoSanity } from 'picosanity';
 
 const config = {
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET,
@@ -102,20 +99,22 @@ export const getImageDimensions = (
 export const imageBuilder = (source: SanityImageSource): ImageUrlBuilder =>
   createImageUrlBuilder(config).image(source);
 
-export const usePreviewSubscription = createPreviewSubscriptionHook(config);
+// export const usePreviewSubscription = createPreviewSubscriptionHook(config);
 
-export const client: PicoSanity = createClient(config);
+export const client: SanityClient = createClient(config);
 
-export const previewClient: PicoSanity = createClient({
-  ...config,
-  useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
-});
+// export const previewClient = createClient({
+//   ...config,
+//   useCdn: false,
+//   token: process.env.SANITY_API_TOKEN,
+// });
 
-export const getClient = (usePreview = false): PicoSanity =>
-  usePreview ? previewClient : client;
+// eslint-disable-next-line
+export const getClient = (_ = false) => createClient(config);
+// export const getClient = (usePreview = false) =>
+//   usePreview ? previewClient : client;
 
-export const getUniquePosts = (posts) => {
+export const getUniquePosts = (posts: Post[]): Post[] => {
   const slugs = new Set();
   return posts.filter((post) => {
     if (slugs.has(post.slug)) {
