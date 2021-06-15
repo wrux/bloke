@@ -1,5 +1,4 @@
 import Document, { Head, Html, Main, NextScript } from 'next/document';
-import Script from 'next/script';
 import React from 'react';
 
 class MyDocument extends Document {
@@ -7,10 +6,11 @@ class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          <Script
+          <script
+            async
+            defer
             data-domain="bloke.blog"
-            src="https://plausible.io/js/plausible.js"
-            strategy="afterInteractive"
+            src="https://stats.bloke.blog/js/index.js"
           />
         </Head>
         <body>
