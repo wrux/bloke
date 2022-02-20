@@ -1,0 +1,8 @@
+{
+  "extends": "next/core-web-vitals",
+  "plugins": ["unused-imports"],
+  "rules": {
+    "sort-imports": ["error"],
+    "unused-imports/no-unused-imports": "error"
+  }
+}

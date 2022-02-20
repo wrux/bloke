@@ -1,15 +1,14 @@
 .github
-.next
 
 # Build files
-/.next
-/.vercel
-/build
-/node_modules
-/public/studio
-/studio/dist
-/studio/node_modules
-/studio/.env
+.next
+.vercel
+build
+node_modules
+/apps/studio/
+/apps/studio/dist
+/apps/studio/node_modules
+/apps/studio/.env
 
 # Local env files
 .env

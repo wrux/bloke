@@ -1,0 +1,35 @@
+{
+  "name": "bloke",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "package.json",
+  "author": "Callum <callumbonnyman@me.com>",
+  "license": "UNLICENSED",
+  "scripts": {
+    "dev": "sanity start",
+    "start": "sanity start",
+    "build": "sanity build"
+  },
+  "keywords": [
+    "sanity"
+  ],
+  "dependencies": {
+    "@sanity/base": "^2.25.1",
+    "@sanity/components": "^2.14.0",
+    "@sanity/core": "^2.25.0",
+    "@sanity/dashboard": "^2.25.1",
+    "@sanity/default-layout": "^2.25.1",
+    "@sanity/default-login": "^2.24.1",
+    "@sanity/desk-tool": "^2.25.3",
+    "@sanity/vision": "^2.25.4",
+    "country-code-emoji": "^2.3.0",
+    "prop-types": "^15.7",
+    "react": "^17.0",
+    "react-dom": "^17.0",
+    "sanity-plugin-dashboard-widget-document-list": "^0.0.13",
+    "sanity-plugin-media": "^1.4.4",
+    "styled-components": "^5.3.3"
+  },
+  "devDependencies": {}
+}
