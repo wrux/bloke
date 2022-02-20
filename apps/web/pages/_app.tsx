@@ -3,17 +3,14 @@ import { PortableTextComponentsProvider } from '@portabletext/react';
 import block from 'components/blocks';
 import types from 'components/types';
 
+const components = {
+  block,
+  types,
+};
+
 const App = ({ Component, pageProps }) => (
   <ChakraProvider>
-    <PortableTextComponentsProvider
-      components={{
-        block,
-        types: {
-          ...types,
-          // image: ({ value }) => <h1>image</h1>,
-        },
-      }}
-    >
+    <PortableTextComponentsProvider components={components}>
       <Component {...pageProps} />
     </PortableTextComponentsProvider>
   </ChakraProvider>
